@@ -68,11 +68,11 @@ How it works
                       it is auto detected.
     -a align       sets section alignment. 16 by default. Any value accepted.
                       However, here is a list of alignments to know:
-		1 - no alignment, risky, shouldn't work.
-		4 - 32-bits alignment, tricky, should on certain loaders.
-	       16 - 128-bits alignment, normal, should work everywhere.
-	      128 - 128-bytes alignment, dma-safe.
-	     4096 - supra-safe, this is the default alignment of binutils.
+        1 - no alignment, risky, shouldn't work.
+        4 - 32-bits alignment, tricky, should on certain loaders.
+           16 - 128-bits alignment, normal, should work everywhere.
+          128 - 128-bytes alignment, dma-safe.
+         4096 - supra-safe, this is the default alignment of binutils.
 
   Now, you have to understand the mechanisms.
 

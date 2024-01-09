@@ -22,125 +22,125 @@
 #include "defines.h"
 
 typedef union {   // Declare union type GPR register
-	u64 UD[2];      //128 bits
-	s64 SD[2];
-	u32 UL[4];
-	s32 SL[4];
-	u16 US[8];
-	s16 SS[8];
-	u8  UC[16];
-	s8  SC[16];
+    u64 UD[2];      //128 bits
+    s64 SD[2];
+    u32 UL[4];
+    s32 SL[4];
+    u16 US[8];
+    s16 SS[8];
+    u8  UC[16];
+    s8  SC[16];
 } GPR_reg;
 
 typedef union {
-	struct {
-		GPR_reg r0, at, v0, v1, a0, a1, a2, a3,
-				t0, t1, t2, t3, t4, t5, t6, t7,
-				s0, s1, s2, s3, s4, s5, s6, s7,
-				t8, t9, k0, k1, gp, sp, s8, ra;
-	} n;
-	GPR_reg r[32];
+    struct {
+        GPR_reg r0, at, v0, v1, a0, a1, a2, a3,
+                t0, t1, t2, t3, t4, t5, t6, t7,
+                s0, s1, s2, s3, s4, s5, s6, s7,
+                t8, t9, k0, k1, gp, sp, s8, ra;
+    } n;
+    GPR_reg r[32];
 } GPRregs;
 
 typedef union {
-	struct {
-		u32	Index,    Random,    EntryLo0,  EntryLo1,
-			Context,  PageMask,  Wired,     Reserved0,
-			BadVAddr, Count,     EntryHi,   Compare;
-		union {
-			struct {
-				int IE:1;
-				int EXL:1;
-				int ERL:1;
-				int KSU:2;
-				int unused0:3;
-				int IM:8;
-				int EIE:1;
-				int EDI:1;
-				int CH:1;
-				int unused1:3;
-				int BEV:1;
-				int DEV:1;
-				int unused2:2;
-				int FR:1;
-				int unused3:1;
-				int CU:4;
-			} b;
-			u32 val;
-		} Status;
-		u32   Cause,    EPC,       PRid,
-			Config,   LLAddr,    WatchLO,   WatchHI,
-			XContext, Reserved1, Reserved2, Debug,
-			DEPC,     PerfCnt,   ErrCtl,    CacheErr,
-			TagLo,    TagHi,     ErrorEPC,  DESAVE;
-	} n;
-	u32 r[32];
+    struct {
+        u32    Index,    Random,    EntryLo0,  EntryLo1,
+            Context,  PageMask,  Wired,     Reserved0,
+            BadVAddr, Count,     EntryHi,   Compare;
+        union {
+            struct {
+                int IE:1;
+                int EXL:1;
+                int ERL:1;
+                int KSU:2;
+                int unused0:3;
+                int IM:8;
+                int EIE:1;
+                int EDI:1;
+                int CH:1;
+                int unused1:3;
+                int BEV:1;
+                int DEV:1;
+                int unused2:2;
+                int FR:1;
+                int unused3:1;
+                int CU:4;
+            } b;
+            u32 val;
+        } Status;
+        u32   Cause,    EPC,       PRid,
+            Config,   LLAddr,    WatchLO,   WatchHI,
+            XContext, Reserved1, Reserved2, Debug,
+            DEPC,     PerfCnt,   ErrCtl,    CacheErr,
+            TagLo,    TagHi,     ErrorEPC,  DESAVE;
+    } n;
+    u32 r[32];
 } CP0regs;
 
 typedef struct {
-    GPRregs GPR;		// GPR regs
-	GPR_reg HI;
-	GPR_reg LO;			// hi & log 128bit wide
-	CP0regs CP0;		// is COP0 32bit?
-    u32 pc;				// Program counter
-    u32 code;			// The instruction
-	u32 cycle;			// calculate cpucycles..
-	u32 sa;				// shift amount (32bit)
-	u32 eCycle[32];
-	u32 sCycle[32];		// for internal counters
-	u32 interrupt;
-	int branch;
-	int opmode;			// operating mode
-	int EEsCycle;
-	int EEoCycle, IOPoCycle;
+    GPRregs GPR;        // GPR regs
+    GPR_reg HI;
+    GPR_reg LO;            // hi & log 128bit wide
+    CP0regs CP0;        // is COP0 32bit?
+    u32 pc;                // Program counter
+    u32 code;            // The instruction
+    u32 cycle;            // calculate cpucycles..
+    u32 sa;                // shift amount (32bit)
+    u32 eCycle[32];
+    u32 sCycle[32];        // for internal counters
+    u32 interrupt;
+    int branch;
+    int opmode;            // operating mode
+    int EEsCycle;
+    int EEoCycle, IOPoCycle;
 } cpuRegisters;
 
 extern cpuRegisters cpuRegs;
 
 typedef union {
-	float f;
-	u32 UL;
+    float f;
+    u32 UL;
 } FPRreg;
 
 typedef struct {
-	FPRreg fpr[32];		// 32bit floating point registers
-	u32 fprc[32];		// 32bit floating point control registers
-	FPRreg ACC;			// 32 bit accumulator 
+    FPRreg fpr[32];        // 32bit floating point registers
+    u32 fprc[32];        // 32bit floating point control registers
+    FPRreg ACC;            // 32 bit accumulator
 } fpuRegisters;
 
 fpuRegisters fpuRegs;
 
 
 typedef struct {
-	u32 PageMask,EntryHi;
-	u32 EntryLo0,EntryLo1;
-	u32 Mask, nMask;
-	u32 G;
-	u32 ASID;
-	u32 VPN2;
-	u32 PFN0;
-	u32 PFN1;
+    u32 PageMask,EntryHi;
+    u32 EntryLo0,EntryLo1;
+    u32 Mask, nMask;
+    u32 G;
+    u32 ASID;
+    u32 VPN2;
+    u32 PFN0;
+    u32 PFN1;
 } tlbs;
 
 tlbs tlb[48];
 
-typedef union 
+typedef union
 {
-	struct
-	{
-		float x,y,z,w;
-	} f;
+    struct
+    {
+        float x,y,z,w;
+    } f;
 
-	float F[4];
-	
-	u64 UD[2];      //128 bits
-	s64 SD[2];
-	u32 UL[4];
-	s32 SL[4];
-	u16 US[8];
-	s16 SS[8];
-	u8  UC[16];
-	s8  SC[16];
+    float F[4];
+
+    u64 UD[2];      //128 bits
+    s64 SD[2];
+    u32 UL[4];
+    s32 SL[4];
+    u16 US[8];
+    s16 SS[8];
+    u8  UC[16];
+    s8  SC[16];
 } VECTOR;
 
 #ifndef _PC_
@@ -160,16 +160,16 @@ typedef union
 /**** R3000A Instruction Macros ****/
 #define _PC_       cpuRegs.pc       // The next PC to be executed
 
-#define _Funct_  ((cpuRegs.code      ) & 0x3F)  // The funct part of the instruction register 
-#define _Rd_     ((cpuRegs.code >> 11) & 0x1F)  // The rd part of the instruction register 
-#define _Rt_     ((cpuRegs.code >> 16) & 0x1F)  // The rt part of the instruction register 
-#define _Rs_     ((cpuRegs.code >> 21) & 0x1F)  // The rs part of the instruction register 
+#define _Funct_  ((cpuRegs.code      ) & 0x3F)  // The funct part of the instruction register
+#define _Rd_     ((cpuRegs.code >> 11) & 0x1F)  // The rd part of the instruction register
+#define _Rt_     ((cpuRegs.code >> 16) & 0x1F)  // The rt part of the instruction register
+#define _Rs_     ((cpuRegs.code >> 21) & 0x1F)  // The rs part of the instruction register
 #define _Sa_     ((cpuRegs.code >>  6) & 0x1F)  // The sa part of the instruction register
 #define _Im_     ((u16)cpuRegs.code) // The immediate part of the instruction register
 #define _Target_ (cpuRegs.code & 0x03ffffff)    // The target part of the instruction register
 
-#define _Imm_	((s16)cpuRegs.code) // sign-extended immediate
-#define _ImmU_	(cpuRegs.code&0xffff) // zero-extended immediate
+#define _Imm_    ((s16)cpuRegs.code) // sign-extended immediate
+#define _ImmU_    (cpuRegs.code&0xffff) // zero-extended immediate
 
 
 #define _JumpTarget_    ((_Target_ * 4) + (_PC_ & 0xf0000000))   // Calculates the target during a jump instruction

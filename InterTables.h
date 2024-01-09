@@ -18,14 +18,14 @@
 #ifndef INTERTABLES_H
 #define INTERTABLES_H
 
-extern  void (*Int_OpcodePrintTable[64])();
-extern  void (*Int_SpecialPrintTable[64])();
-extern  void (*Int_REGIMMPrintTable[32])();
-extern  void (*Int_MMIPrintTable[64])();
-extern  void (*Int_MMI0PrintTable[32])();
-extern  void (*Int_MMI1PrintTable[32])();
-extern  void (*Int_MMI2PrintTable[32])();
-extern  void (*Int_MMI3PrintTable[32])();
+extern void (*Int_OpcodePrintTable[64])();
+extern void (*Int_SpecialPrintTable[64])();
+extern void (*Int_REGIMMPrintTable[32])();
+extern void (*Int_MMIPrintTable[64])();
+extern void (*Int_MMI0PrintTable[32])();
+extern void (*Int_MMI1PrintTable[32])();
+extern void (*Int_MMI2PrintTable[32])();
+extern void (*Int_MMI3PrintTable[32])();
 
 void SPECIAL();
 void REGIMM();
@@ -166,28 +166,28 @@ void PSRAW();
 //*****************END OF MMI OPCODES**************************
 //*************************MMI0 OPCODES************************
 
-void PADDW();  
-void PSUBW();  
-void PCGTW();  
-void PMAXW(); 
-void PADDH();  
-void PSUBH();  
-void PCGTH();  
-void PMAXH(); 
-void PADDB();  
-void PSUBB();  
+void PADDW();
+void PSUBW();
+void PCGTW();
+void PMAXW();
+void PADDH();
+void PSUBH();
+void PCGTH();
+void PMAXH();
+void PADDB();
+void PSUBB();
 void PCGTB();
-void PADDSW(); 
-void PSUBSW(); 
-void PEXTLW();  
-void PPACW(); 
+void PADDSW();
+void PSUBSW();
+void PEXTLW();
+void PPACW();
 void PADDSH();
 void PSUBSH();
-void PEXTLH(); 
+void PEXTLH();
 void PPACH();
 void PADDSB();
 void PSUBSB();
-void PEXTLB(); 
+void PEXTLB();
 void PPACB();
 void PEXT5();
 void PPAC5();

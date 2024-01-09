@@ -1,3 +1,11 @@
 .*
+*.o
+ps2-unpacker
+ps2-unpacker.exe
+*.gz
+*.zip
+
 !.gitignore
 !.github
+!.editorconfig
+!.clang-format

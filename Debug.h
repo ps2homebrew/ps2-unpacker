@@ -22,7 +22,7 @@
 
 #include "defines.h"
 
-char* disR5900F(u32 code, u32 pc);
-char* disR5900Fasm(u32 code, u32 pc);
+char *disR5900F(u32 code, u32 pc);
+char *disR5900Fasm(u32 code, u32 pc);
 
 #endif /* __DEBUG_H__ */

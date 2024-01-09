@@ -32,9 +32,9 @@ unsigned long opcode_addr;
 ///********
 
 #define DECODE_FUNCTION     ((cpuRegs.code) & 0x3F)
-#define DECODE_RD     ((cpuRegs.code >> 11) & 0x1F) // The rd part of the instruction register 
-#define DECODE_RT     ((cpuRegs.code >> 16) & 0x1F) // The rt part of the instruction register 
-#define DECODE_RS     ((cpuRegs.code >> 21) & 0x1F) // The rs part of the instruction register 
+#define DECODE_RD     ((cpuRegs.code >> 11) & 0x1F) // The rd part of the instruction register
+#define DECODE_RT     ((cpuRegs.code >> 16) & 0x1F) // The rt part of the instruction register
+#define DECODE_RS     ((cpuRegs.code >> 21) & 0x1F) // The rs part of the instruction register
 #define DECODE_SA     ((cpuRegs.code >>  6) & 0x1F) // The sa part of the instruction register
 #define DECODE_IMMED     ( cpuRegs.code & 0xFFFF)      // The immediate part of the instruction register
 #define DECODE_OFFSET  ((((short)DECODE_IMMED * 4) + opcode_addr + 4))
@@ -43,7 +43,7 @@ unsigned long opcode_addr;
 #define DECODE_BREAK        (DECODE_SYSCALL)
 #define DECODE_C0BC         ((cpuRegs.code >> 16) & 0x03)
 #define DECODE_C1BC         ((cpuRegs.code >> 16) & 0x03)
-#define DECODE_C2BC         ((cpuRegs.code >> 16) & 0x03)   
+#define DECODE_C2BC         ((cpuRegs.code >> 16) & 0x03)
 //*************************CPUS REGISTERS*************************
 char *GPR_REG[32] = {
     "zero", "at", "v0", "v1", "a0", "a1", "a2", "a3",
@@ -52,41 +52,41 @@ char *GPR_REG[32] = {
     "t8", "t9", "k0", "k1", "gp", "sp", "fp", "ra"
 };
 char *COP0_REG[32] ={
-	"Index","Random","EntryLo0","EntryLo1","Context","PageMask",
-	"Wired","C0r7","BadVaddr","Count","EntryHi","Compare","Status",
-	"Cause","EPC","PRId","Config","C0r17","C0r18","C0r19","C0r20",
-	"C0r21","C0r22","C0r23","Debug","Perf","C0r26","C0r27","TagLo",
-	"TagHi","ErrorPC","C0r31"
+    "Index","Random","EntryLo0","EntryLo1","Context","PageMask",
+    "Wired","C0r7","BadVaddr","Count","EntryHi","Compare","Status",
+    "Cause","EPC","PRId","Config","C0r17","C0r18","C0r19","C0r20",
+    "C0r21","C0r22","C0r23","Debug","Perf","C0r26","C0r27","TagLo",
+    "TagHi","ErrorPC","C0r31"
 };
 //floating point cop1 Floating point reg
 char *COP1_REG_FP[32] ={
- 	"f00","f01","f02","f03","f04","f05","f06","f07",
-	"f08","f09","f10","f11","f12","f13","f14","f15",
-	"f16","f17","f18","f19","f20","f21","f21","f23",
-	"f24","f25","f26","f27","f28","f29","f30","f31"
+     "f00","f01","f02","f03","f04","f05","f06","f07",
+    "f08","f09","f10","f11","f12","f13","f14","f15",
+    "f16","f17","f18","f19","f20","f21","f21","f23",
+    "f24","f25","f26","f27","f28","f29","f30","f31"
 };
 //floating point cop1 control registers
 char *COP1_REG_FCR[32] ={
- 	"fcr00","fcr01","fcr02","fcr03","fcr04","fcr05","fcr06","fcr07",
-	"fcr08","fcr09","fcr10","fcr11","fcr12","fcr13","fcr14","fcr15",
-	"fcr16","fcr17","fcr18","fcr19","fcr20","fcr21","fcr21","fcr23",
-	"fcr24","fcr25","fcr26","fcr27","fcr28","fcr29","fcr30","fcr31"
+     "fcr00","fcr01","fcr02","fcr03","fcr04","fcr05","fcr06","fcr07",
+    "fcr08","fcr09","fcr10","fcr11","fcr12","fcr13","fcr14","fcr15",
+    "fcr16","fcr17","fcr18","fcr19","fcr20","fcr21","fcr21","fcr23",
+    "fcr24","fcr25","fcr26","fcr27","fcr28","fcr29","fcr30","fcr31"
 };
 
 //floating point cop2 reg
 char *COP2_REG_FP[32] ={
-	"vf00","vf01","vf02","vf03","vf04","vf05","vf06","vf07",
-	"vf08","vf09","vf10","vf11","vf12","vf13","vf14","vf15",
-	"vf16","vf17","vf18","vf19","vf20","vf21","vf21","vf23",
-	"vf24","vf25","vf26","vf27","vf28","vf29","vf30","vf31"
+    "vf00","vf01","vf02","vf03","vf04","vf05","vf06","vf07",
+    "vf08","vf09","vf10","vf11","vf12","vf13","vf14","vf15",
+    "vf16","vf17","vf18","vf19","vf20","vf21","vf21","vf23",
+    "vf24","vf25","vf26","vf27","vf28","vf29","vf30","vf31"
 };
 //cop2 control registers
 
 char *COP2_REG_CTL[32] ={
-	"vi00","vi01","vi02","vi03","vi04","vi05","vi06","vi07",
-	"vi08","vi09","vi10","vi11","vi12","vi13","vi14","vi15",
-	"Status","MACflag","ClipFlag","c2c19","R","I","Q","c2c23",
-	"c2c24","c2c25","TPC","CMSAR0","FBRST","VPU-STAT","c2c30","CMSAR1"
+    "vi00","vi01","vi02","vi03","vi04","vi05","vi06","vi07",
+    "vi08","vi09","vi10","vi11","vi12","vi13","vi14","vi15",
+    "Status","MACflag","ClipFlag","c2c19","R","I","Q","c2c23",
+    "c2c24","c2c25","TPC","CMSAR0","FBRST","VPU-STAT","c2c30","CMSAR1"
 };
 
 
@@ -107,7 +107,7 @@ void P_MMI2(char *buf);
 void P_MMI3(char *buf);
 void P_COP0_Unknown(char *buf);
 void P_COP0_BC0(char *buf);
-void P_COP0_Func(char *buf); 
+void P_COP0_Func(char *buf);
 void P_COP1_BC1(char *buf);
 void P_COP1_S(char *buf);
 void P_COP1_W(char *buf);
@@ -266,56 +266,56 @@ void P_PSRAW(char *buf);
 //*****************END OF MMI OPCODES**************************
 //*************************MMI0 OPCODES************************
 
-void P_PADDW(char *buf);  
-void P_PSUBW(char *buf);  
-void P_PCGTW(char *buf);  
-void P_PMAXW(char *buf); 
-void P_PADDH(char *buf);  
-void P_PSUBH(char *buf);  
-void P_PCGTH(char *buf);  
-void P_PMAXH(char *buf); 
-void P_PADDB(char *buf);  
-void P_PSUBB(char *buf);  
+void P_PADDW(char *buf);
+void P_PSUBW(char *buf);
+void P_PCGTW(char *buf);
+void P_PMAXW(char *buf);
+void P_PADDH(char *buf);
+void P_PSUBH(char *buf);
+void P_PCGTH(char *buf);
+void P_PMAXH(char *buf);
+void P_PADDB(char *buf);
+void P_PSUBB(char *buf);
 void P_PCGTB(char *buf);
-void P_PADDSW(char *buf); 
-void P_PSUBSW(char *buf); 
-void P_PEXTLW(char *buf);  
-void P_PPACW(char *buf); 
+void P_PADDSW(char *buf);
+void P_PSUBSW(char *buf);
+void P_PEXTLW(char *buf);
+void P_PPACW(char *buf);
 void P_PADDSH(char *buf);
 void P_PSUBSH(char *buf);
-void P_PEXTLH(char *buf); 
+void P_PEXTLH(char *buf);
 void P_PPACH(char *buf);
 void P_PADDSB(char *buf);
 void P_PSUBSB(char *buf);
-void P_PEXTLB(char *buf); 
+void P_PEXTLB(char *buf);
 void P_PPACB(char *buf);
-void P_PEXT5(char *buf); 
+void P_PEXT5(char *buf);
 void P_PPAC5(char *buf);
 //***END OF MMI0 OPCODES******************************************
 //**********MMI1 OPCODES**************************************
 void P_PABSW(char *buf);
 void P_PCEQW(char *buf);
-void P_PMINW(char *buf); 
+void P_PMINW(char *buf);
 void P_PADSBH(char *buf);
 void P_PABSH(char *buf);
 void P_PCEQH(char *buf);
-void P_PMINH(char *buf);  
-void P_PCEQB(char *buf); 
+void P_PMINH(char *buf);
+void P_PCEQB(char *buf);
 void P_PADDUW(char *buf);
-void P_PSUBUW(char *buf); 
-void P_PEXTUW(char *buf);  
+void P_PSUBUW(char *buf);
+void P_PEXTUW(char *buf);
 void P_PADDUH(char *buf);
-void P_PSUBUH(char *buf); 
-void P_PEXTUH(char *buf); 
+void P_PSUBUH(char *buf);
+void P_PEXTUH(char *buf);
 void P_PADDUB(char *buf);
 void P_PSUBUB(char *buf);
 void P_PEXTUB(char *buf);
-void P_QFSRV(char *buf); 
+void P_QFSRV(char *buf);
 //********END OF MMI1 OPCODES***********************************
 //*********MMI2 OPCODES***************************************
 void P_PMADDW(char *buf);
 void P_PSLLVW(char *buf);
-void P_PSRLVW(char *buf); 
+void P_PSRLVW(char *buf);
 void P_PMSUBW(char *buf);
 void P_PMFHI(char *buf);
 void P_PMFLO(char *buf);
@@ -326,11 +326,11 @@ void P_PCPYLD(char *buf);
 void P_PMADDH(char *buf);
 void P_PHMADH(char *buf);
 void P_PAND(char *buf);
-void P_PXOR(char *buf); 
+void P_PXOR(char *buf);
 void P_PMSUBH(char *buf);
 void P_PHMSBH(char *buf);
 void P_PEXEH(char *buf);
-void P_PREVH(char *buf); 
+void P_PREVH(char *buf);
 void P_PMULTH(char *buf);
 void P_PDIVBW(char *buf);
 void P_PEXEW(char *buf);
@@ -338,19 +338,19 @@ void P_PROT3W(char *buf);
 //*****END OF MMI2 OPCODES***********************************
 //*************************MMI3 OPCODES************************
 void P_PMADDUW(char *buf);
-void P_PSRAVW(char *buf); 
+void P_PSRAVW(char *buf);
 void P_PMTHI(char *buf);
 void P_PMTLO(char *buf);
-void P_PINTEH(char *buf); 
+void P_PINTEH(char *buf);
 void P_PMULTUW(char *buf);
 void P_PDIVUW(char *buf);
-void P_PCPYUD(char *buf); 
+void P_PCPYUD(char *buf);
 void P_POR(char *buf);
-void P_PNOR(char *buf);  
+void P_PNOR(char *buf);
 void P_PEXCH(char *buf);
-void P_PCPYH(char *buf); 
+void P_PCPYH(char *buf);
 void P_PEXCW(char *buf);
-//**********************END OF MMI3 OPCODES******************** 
+//**********************END OF MMI3 OPCODES********************
 //****************************************************************************
 //** COP0                                                                   **
 //****************************************************************************
@@ -381,21 +381,21 @@ void P_BC1F(char *buf);
 void P_BC1T(char *buf);
 void P_BC1FL(char *buf);
 void P_BC1TL(char *buf);
-void P_ADD_S(char *buf);  
-void P_SUB_S(char *buf);  
-void P_MUL_S(char *buf);  
-void P_DIV_S(char *buf);  
-void P_SQRT_S(char *buf); 
-void P_ABS_S(char *buf);  
-void P_MOV_S(char *buf); 
-void P_NEG_S(char *buf); 
-void P_RSQRT_S(char *buf);  
-void P_ADDA_S(char *buf); 
-void P_SUBA_S(char *buf); 
+void P_ADD_S(char *buf);
+void P_SUB_S(char *buf);
+void P_MUL_S(char *buf);
+void P_DIV_S(char *buf);
+void P_SQRT_S(char *buf);
+void P_ABS_S(char *buf);
+void P_MOV_S(char *buf);
+void P_NEG_S(char *buf);
+void P_RSQRT_S(char *buf);
+void P_ADDA_S(char *buf);
+void P_SUBA_S(char *buf);
 void P_MULA_S(char *buf);
-void P_MADD_S(char *buf); 
-void P_MSUB_S(char *buf); 
-void P_MADDA_S(char *buf); 
+void P_MADD_S(char *buf);
+void P_MSUB_S(char *buf);
+void P_MADDA_S(char *buf);
 void P_MSUBA_S(char *buf);
 void P_CVT_W(char *buf);
 void P_MAX_S(char *buf);
@@ -411,138 +411,138 @@ void P_C_LE(char *buf);
 //****************************************************************************
 //** COP2 - (VU0)                                                           **
 //****************************************************************************
-void P_QMFC2(char *buf); 
-void P_CFC2(char *buf); 
+void P_QMFC2(char *buf);
+void P_CFC2(char *buf);
 void P_QMTC2(char *buf);
-void P_CTC2(char *buf);  
+void P_CTC2(char *buf);
 void P_BC2F(char *buf);
 void P_BC2T(char *buf);
 void P_BC2FL(char *buf);
 void P_BC2TL(char *buf);
 //*****************SPECIAL 1 VUO TABLE*******************************
-void P_VADDx(char *buf);       
-void P_VADDy(char *buf);       
-void P_VADDz(char *buf);       
-void P_VADDw(char *buf);       
-void P_VSUBx(char *buf);        
-void P_VSUBy(char *buf);        
+void P_VADDx(char *buf);
+void P_VADDy(char *buf);
+void P_VADDz(char *buf);
+void P_VADDw(char *buf);
+void P_VSUBx(char *buf);
+void P_VSUBy(char *buf);
 void P_VSUBz(char *buf);
-void P_VSUBw(char *buf); 
+void P_VSUBw(char *buf);
 void P_VMADDx(char *buf);
 void P_VMADDy(char *buf);
 void P_VMADDz(char *buf);
 void P_VMADDw(char *buf);
 void P_VMSUBx(char *buf);
 void P_VMSUBy(char *buf);
-void P_VMSUBz(char *buf);       
-void P_VMSUBw(char *buf); 
-void P_VMAXx(char *buf);       
-void P_VMAXy(char *buf);       
-void P_VMAXz(char *buf);       
-void P_VMAXw(char *buf);       
-void P_VMINIx(char *buf);       
-void P_VMINIy(char *buf);       
-void P_VMINIz(char *buf);       
-void P_VMINIw(char *buf); 
-void P_VMULx(char *buf);       
-void P_VMULy(char *buf);       
-void P_VMULz(char *buf);       
-void P_VMULw(char *buf);       
-void P_VMULq(char *buf);        
-void P_VMAXi(char *buf);        
-void P_VMULi(char *buf);        
+void P_VMSUBz(char *buf);
+void P_VMSUBw(char *buf);
+void P_VMAXx(char *buf);
+void P_VMAXy(char *buf);
+void P_VMAXz(char *buf);
+void P_VMAXw(char *buf);
+void P_VMINIx(char *buf);
+void P_VMINIy(char *buf);
+void P_VMINIz(char *buf);
+void P_VMINIw(char *buf);
+void P_VMULx(char *buf);
+void P_VMULy(char *buf);
+void P_VMULz(char *buf);
+void P_VMULw(char *buf);
+void P_VMULq(char *buf);
+void P_VMAXi(char *buf);
+void P_VMULi(char *buf);
 void P_VMINIi(char *buf);
 void P_VADDq(char *buf);
-void P_VMADDq(char *buf);      
-void P_VADDi(char *buf);       
-void P_VMADDi(char *buf);      
-void P_VSUBq(char *buf);        
-void P_VMSUBq(char *buf);       
-void P_VSUbi(char *buf);        
-void P_VMSUBi(char *buf); 
-void P_VADD(char *buf);        
-void P_VMADD(char *buf);       
-void P_VMUL(char *buf);        
-void P_VMAX(char *buf);        
-void P_VSUB(char *buf);         
-void P_VMSUB(char *buf);       
-void P_VOPMSUB(char *buf);      
-void P_VMINI(char *buf);  
-void P_VIADD(char *buf);       
-void P_VISUB(char *buf);       
-void P_VIADDI(char *buf);        
-void P_VIAND(char *buf);        
-void P_VIOR(char *buf);        
-void P_VCALLMS(char *buf);     
-void P_CALLMSR(char *buf);   
+void P_VMADDq(char *buf);
+void P_VADDi(char *buf);
+void P_VMADDi(char *buf);
+void P_VSUBq(char *buf);
+void P_VMSUBq(char *buf);
+void P_VSUbi(char *buf);
+void P_VMSUBi(char *buf);
+void P_VADD(char *buf);
+void P_VMADD(char *buf);
+void P_VMUL(char *buf);
+void P_VMAX(char *buf);
+void P_VSUB(char *buf);
+void P_VMSUB(char *buf);
+void P_VOPMSUB(char *buf);
+void P_VMINI(char *buf);
+void P_VIADD(char *buf);
+void P_VISUB(char *buf);
+void P_VIADDI(char *buf);
+void P_VIAND(char *buf);
+void P_VIOR(char *buf);
+void P_VCALLMS(char *buf);
+void P_CALLMSR(char *buf);
 //***********************************END OF SPECIAL1 VU0 TABLE*****************************
 //******************************SPECIAL2 VUO TABLE*****************************************
-void P_VADDAx(char *buf);      
-void P_VADDAy(char *buf);      
-void P_VADDAz(char *buf);      
-void P_VADDAw(char *buf);      
-void P_VSUBAx(char *buf);      
-void P_VSUBAy(char *buf);      
-void P_VSUBAz(char *buf);      
+void P_VADDAx(char *buf);
+void P_VADDAy(char *buf);
+void P_VADDAz(char *buf);
+void P_VADDAw(char *buf);
+void P_VSUBAx(char *buf);
+void P_VSUBAy(char *buf);
+void P_VSUBAz(char *buf);
 void P_VSUBAw(char *buf);
-void P_VMADDAx(char *buf);     
-void P_VMADDAy(char *buf);     
-void P_VMADDAz(char *buf);     
-void P_VMADDAw(char *buf);     
-void P_VMSUBAx(char *buf);     
-void P_VMSUBAy(char *buf);     
-void P_VMSUBAz(char *buf);     
+void P_VMADDAx(char *buf);
+void P_VMADDAy(char *buf);
+void P_VMADDAz(char *buf);
+void P_VMADDAw(char *buf);
+void P_VMSUBAx(char *buf);
+void P_VMSUBAy(char *buf);
+void P_VMSUBAz(char *buf);
 void P_VMSUBAw(char *buf);
-void P_VITOF0(char *buf);      
-void P_VITOF4(char *buf);      
-void P_VITOF12(char *buf);     
-void P_VITOF15(char *buf);     
-void P_VFTOI0(char *buf);      
-void P_VFTOI4(char *buf);      
-void P_VFTOI12(char *buf);     
+void P_VITOF0(char *buf);
+void P_VITOF4(char *buf);
+void P_VITOF12(char *buf);
+void P_VITOF15(char *buf);
+void P_VFTOI0(char *buf);
+void P_VFTOI4(char *buf);
+void P_VFTOI12(char *buf);
 void P_VFTOI15(char *buf);
-void P_VMULAx(char *buf);      
-void P_VMULAy(char *buf);      
-void P_VMULAz(char *buf);      
-void P_VMULAw(char *buf);      
-void P_VMULAq(char *buf);      
-void P_VABS(char *buf);        
-void P_VMULAi(char *buf);      
+void P_VMULAx(char *buf);
+void P_VMULAy(char *buf);
+void P_VMULAz(char *buf);
+void P_VMULAw(char *buf);
+void P_VMULAq(char *buf);
+void P_VABS(char *buf);
+void P_VMULAi(char *buf);
 void P_VCLIPw(char *buf);
-void P_VADDAq(char *buf);      
-void P_VMADDAq(char *buf);     
-void P_VADDAi(char *buf);      
-void P_VMADDAi(char *buf);     
-void P_VSUBAq(char *buf);      
-void P_VMSUBAq(char *buf);     
-void P_VSUBAi(char *buf);      
+void P_VADDAq(char *buf);
+void P_VMADDAq(char *buf);
+void P_VADDAi(char *buf);
+void P_VMADDAi(char *buf);
+void P_VSUBAq(char *buf);
+void P_VMSUBAq(char *buf);
+void P_VSUBAi(char *buf);
 void P_VMSUBAi(char *buf);
-void P_VADDA(char *buf);       
-void P_VMADDA(char *buf);      
-void P_VMULA(char *buf);       
-void P_VSUBA(char *buf);       
-void P_VMSUBA(char *buf);      
-void P_VOPMULA(char *buf);     
-void P_VNOP(char *buf);   
-void P_VMONE(char *buf);       
-void P_VMR32(char *buf);       
-void P_VLQI(char *buf);        
-void P_VSQI(char *buf);        
-void P_VLQD(char *buf);        
-void P_VSQD(char *buf);   
-void P_VDIV(char *buf);        
-void P_VSQRT(char *buf);       
-void P_VRSQRT(char *buf);      
-void P_VWAITQ(char *buf);     
-void P_VMTIR(char *buf);       
-void P_VMFIR(char *buf);       
-void P_VILWR(char *buf);       
-void P_VISWR(char *buf);  
-void P_VRNEXT(char *buf);      
-void P_VRGET(char *buf);       
-void P_VRINIT(char *buf);      
-void P_VRXOR(char *buf);  
-//************************************END OF SPECIAL2 VUO TABLE****************************     
+void P_VADDA(char *buf);
+void P_VMADDA(char *buf);
+void P_VMULA(char *buf);
+void P_VSUBA(char *buf);
+void P_VMSUBA(char *buf);
+void P_VOPMULA(char *buf);
+void P_VNOP(char *buf);
+void P_VMONE(char *buf);
+void P_VMR32(char *buf);
+void P_VLQI(char *buf);
+void P_VSQI(char *buf);
+void P_VLQD(char *buf);
+void P_VSQD(char *buf);
+void P_VDIV(char *buf);
+void P_VSQRT(char *buf);
+void P_VRSQRT(char *buf);
+void P_VWAITQ(char *buf);
+void P_VMTIR(char *buf);
+void P_VMFIR(char *buf);
+void P_VILWR(char *buf);
+void P_VISWR(char *buf);
+void P_VRNEXT(char *buf);
+void P_VRGET(char *buf);
+void P_VRINIT(char *buf);
+void P_VRXOR(char *buf);
+//************************************END OF SPECIAL2 VUO TABLE****************************
 
 
 /*
@@ -576,7 +576,7 @@ void (*OpcodePrintTable[64])(char *buf) = {
 };
 
 
-	  /*
+      /*
      SPECIAL: Instr. encoded by function field when opcode field = SPECIAL
     31---------26------------------------------------------5--------0
     | = SPECIAL |                                         | function|
@@ -668,15 +668,15 @@ void (*MMIPrintTable[64])(char *buf) = {
 111 | ---   |  ---  | PEXT5 | PPAC5 |
  hi |-------|-------|-------|-------|
 */
-void (*MMI0PrintTable[32])(char *buf) = { 
- P_PADDW,         P_PSUBW,         P_PCGTW,          P_PMAXW,       
- P_PADDH,         P_PSUBH,         P_PCGTH,          P_PMAXH,        
+void (*MMI0PrintTable[32])(char *buf) = {
+ P_PADDW,         P_PSUBW,         P_PCGTW,          P_PMAXW,
+ P_PADDH,         P_PSUBH,         P_PCGTH,          P_PMAXH,
  P_PADDB,         P_PSUBB,         P_PCGTB,          P_MMI_Unknown,
  P_MMI_Unknown,   P_MMI_Unknown,   P_MMI_Unknown,    P_MMI_Unknown,
- P_PADDSW,        P_PSUBSW,        P_PEXTLW,         P_PPACW,        
- P_PADDSH,        P_PSUBSH,        P_PEXTLH,         P_PPACH,        
- P_PADDSB,        P_PSUBSB,        P_PEXTLB,         P_PPACB,        
- P_MMI_Unknown,   P_MMI_Unknown,   P_PEXT5,          P_PPAC5,        
+ P_PADDSW,        P_PSUBSW,        P_PEXTLW,         P_PPACW,
+ P_PADDSH,        P_PSUBSH,        P_PEXTLH,         P_PPACH,
+ P_PADDSB,        P_PSUBSB,        P_PEXTLB,         P_PPACB,
+ P_MMI_Unknown,   P_MMI_Unknown,   P_PEXT5,          P_PPAC5,
 };
 /*
   MMI1: Instr. encoded by function field when opcode field = MMI & MMI1
@@ -686,7 +686,7 @@ void (*MMI0PrintTable[32])(char *buf) = {
     ------6----------------------------------------------------6-----
     |--000--|--001--|--010--|--011--| lo
 000 |  ---  | PABSW | PCEQW | PMINW |
-001 |PADSBH | PABSH | PCEQH | PMINH | 
+001 |PADSBH | PABSH | PCEQH | PMINH |
 010 |  ---  |  ---  | PCEQB |  ---  |
 011 |  ---  |  ---  |  ---  |  ---  |
 100 |PADDUW |PSUBUW |PEXTUW |  ---  |
@@ -695,15 +695,15 @@ void (*MMI0PrintTable[32])(char *buf) = {
 111 |  ---  |  ---  |  ---  |  ---  |
  hi |-------|-------|-------|-------|
 */
-void (*MMI1PrintTable[32])(char *buf) = { 
- P_MMI_Unknown, P_PABSW,         P_PCEQW,       P_PMINW, 
- P_PADSBH,      P_PABSH,         P_PCEQH,       P_PMINH, 
- P_MMI_Unknown, P_MMI_Unknown,   P_PCEQB,       P_MMI_Unknown, 
- P_MMI_Unknown, P_MMI_Unknown,   P_MMI_Unknown, P_MMI_Unknown, 
- P_PADDUW,      P_PSUBUW,        P_PEXTUW,      P_MMI_Unknown,  
- P_PADDUH,      P_PSUBUH,        P_PEXTUH,      P_MMI_Unknown, 
- P_PADDUB,      P_PSUBUB,        P_PEXTUB,      P_QFSRV, 
- P_MMI_Unknown, P_MMI_Unknown,   P_MMI_Unknown, P_MMI_Unknown, 
+void (*MMI1PrintTable[32])(char *buf) = {
+ P_MMI_Unknown, P_PABSW,         P_PCEQW,       P_PMINW,
+ P_PADSBH,      P_PABSH,         P_PCEQH,       P_PMINH,
+ P_MMI_Unknown, P_MMI_Unknown,   P_PCEQB,       P_MMI_Unknown,
+ P_MMI_Unknown, P_MMI_Unknown,   P_MMI_Unknown, P_MMI_Unknown,
+ P_PADDUW,      P_PSUBUW,        P_PEXTUW,      P_MMI_Unknown,
+ P_PADDUH,      P_PSUBUH,        P_PEXTUH,      P_MMI_Unknown,
+ P_PADDUB,      P_PSUBUB,        P_PEXTUB,      P_QFSRV,
+ P_MMI_Unknown, P_MMI_Unknown,   P_MMI_Unknown, P_MMI_Unknown,
 };
 
 /*
@@ -714,7 +714,7 @@ void (*MMI1PrintTable[32])(char *buf) = {
     ------6----------------------------------------------------6-----
     |--000--|--001--|--010--|--011--| lo
 000 |PMADDW |  ---  |PSLLVW |PSRLVW |
-001 |PMSUBW |  ---  |  ---  |  ---  | 
+001 |PMSUBW |  ---  |  ---  |  ---  |
 010 |PMFHI  |PMFLO  |PINTH  |  ---  |
 011 |PMULTW |PDIVW  |PCPYLD |  ---  |
 100 |PMADDH |PHMADH | PAND  |  PXOR |
@@ -723,15 +723,15 @@ void (*MMI1PrintTable[32])(char *buf) = {
 111 |PMULTH |PDIVBW | PEXEW |PROT3W |
  hi |-------|-------|-------|-------|
 */
-void (*MMI2PrintTable[32])(char *buf) = { 
- P_PMADDW,        P_MMI_Unknown,   P_PSLLVW,        P_PSRLVW, 
+void (*MMI2PrintTable[32])(char *buf) = {
+ P_PMADDW,        P_MMI_Unknown,   P_PSLLVW,        P_PSRLVW,
  P_PMSUBW,        P_MMI_Unknown,   P_MMI_Unknown,   P_MMI_Unknown,
  P_PMFHI,         P_PMFLO,         P_PINTH,         P_MMI_Unknown,
  P_PMULTW,        P_PDIVW,         P_PCPYLD,        P_MMI_Unknown,
- P_PMADDH,        P_PHMADH,        P_PAND,          P_PXOR, 
- P_PMSUBH,        P_PHMSBH,        P_MMI_Unknown,   P_MMI_Unknown, 
- P_MMI_Unknown,   P_MMI_Unknown,   P_PEXEH,         P_PREVH, 
- P_PMULTH,        P_PDIVBW,        P_PEXEW,         P_PROT3W, 
+ P_PMADDH,        P_PHMADH,        P_PAND,          P_PXOR,
+ P_PMSUBH,        P_PHMSBH,        P_MMI_Unknown,   P_MMI_Unknown,
+ P_MMI_Unknown,   P_MMI_Unknown,   P_PEXEH,         P_PREVH,
+ P_PMULTH,        P_PDIVBW,        P_PEXEW,         P_PROT3W,
 };
 /*
   MMI3: Instr. encoded by function field when opcode field = MMI & MMI3
@@ -740,7 +740,7 @@ void (*MMI2PrintTable[32])(char *buf) = {
     ------6----------------------------------------------------6-----
     |--000--|--001--|--010--|--011--| lo
 000 |PMADDUW|  ---  |  ---  |PSRAVW |
-001 |  ---  |  ---  |  ---  |  ---  | 
+001 |  ---  |  ---  |  ---  |  ---  |
 010 |PMTHI  | PMTLO |PINTEH |  ---  |
 011 |PMULTUW| PDIVUW|PCPYUD |  ---  |
 100 |  ---  |  ---  |  POR  | PNOR  |
@@ -749,14 +749,14 @@ void (*MMI2PrintTable[32])(char *buf) = {
 111 |  ---  |  ---  | PEXCW |  ---  |
  hi |-------|-------|-------|-------|
  */
-void (*MMI3PrintTable[32])(char *buf) = { 
- P_PMADDUW,     P_MMI_Unknown, P_MMI_Unknown, P_PSRAVW, 
+void (*MMI3PrintTable[32])(char *buf) = {
+ P_PMADDUW,     P_MMI_Unknown, P_MMI_Unknown, P_PSRAVW,
  P_MMI_Unknown, P_MMI_Unknown, P_MMI_Unknown, P_MMI_Unknown,
  P_PMTHI,       P_PMTLO,       P_PINTEH,      P_MMI_Unknown,
  P_PMULTUW,     P_PDIVUW,      P_PCPYUD,      P_MMI_Unknown,
- P_MMI_Unknown, P_MMI_Unknown, P_POR,         P_PNOR,  
+ P_MMI_Unknown, P_MMI_Unknown, P_POR,         P_PNOR,
  P_MMI_Unknown, P_MMI_Unknown, P_MMI_Unknown, P_MMI_Unknown,
- P_MMI_Unknown, P_MMI_Unknown, P_PEXCH,       P_PCPYH, 
+ P_MMI_Unknown, P_MMI_Unknown, P_PEXCH,       P_PCPYH,
  P_MMI_Unknown, P_MMI_Unknown, P_PEXCW,       P_MMI_Unknown,
 };
 /*
@@ -833,8 +833,8 @@ void (*COP0C0PrintTable[64])(char *buf) = {
  10 | *2    |  ---  |  ---  |  ---  | *3    |  ---  |  ---  |  ---  |
  11 |  ---  |  ---  |  ---  |  ---  |  ---  |  ---  |  ---  |  ---  |
  hi |-------|-------|-------|-------|-------|-------|-------|-------|
-     *1 = BC instructions, see BC1 list   *2 = S instr, see FPU list            
-     *3 = W instr, see FPU list 
+     *1 = BC instructions, see BC1 list   *2 = S instr, see FPU list
+     *3 = W instr, see FPU list
 */
 void (*COP1PrintTable[32])(char *buf) = {
     P_MFC1,         P_COP1_Unknown, P_CFC1,         P_COP1_Unknown, P_MTC1,         P_COP1_Unknown, P_CTC1,         P_COP1_Unknown,
@@ -852,7 +852,7 @@ void (*COP1PrintTable[32])(char *buf) = {
  01 |  ---  |  ---  |  ---  |  ---  |  ---  |  ---  |  ---  |  ---  |
  10 |  ---  |  ---  |  ---  |  ---  |  ---  |  ---  |  ---  |  ---  |
  11 |  ---  |  ---  |  ---  |  ---  |  ---  |  ---  |  ---  |  ---  |
- hi |-------|-------|-------|-------|-------|-------|-------|-------|   
+ hi |-------|-------|-------|-------|-------|-------|-------|-------|
 */
 void (*COP1BC1PrintTable[32])(char *buf) = {
     P_BC1F,         P_BC1T,         P_BC1FL,        P_BC1TL,        P_COP1_Unknown, P_COP1_Unknown, P_COP1_Unknown, P_COP1_Unknown,
@@ -875,17 +875,17 @@ void (*COP1BC1PrintTable[32])(char *buf) = {
 101 | MAX.S | MIN.S |  ---  |  ---  |  ---  |  ---  |  ---  |  ---  |
 110 | C.F   | ---   | C.EQ  |  ---  | C.LT  |  ---  |  C.LE |  ---  |
 111 | ---   | ---   |  ---  |  ---  |  ---  |  ---  |  ---  |  ---  |
- hi |-------|-------|-------|-------|-------|-------|-------|-------| 
+ hi |-------|-------|-------|-------|-------|-------|-------|-------|
 */
 void (*COP1SPrintTable[64])(char *buf) = {
-P_ADD_S,       P_SUB_S,       P_MUL_S,       P_DIV_S,       P_SQRT_S,      P_ABS_S,       P_MOV_S,       P_NEG_S, 
-P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,   
-P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_RSQRT_S,     P_COP1_Unknown,  
+P_ADD_S,       P_SUB_S,       P_MUL_S,       P_DIV_S,       P_SQRT_S,      P_ABS_S,       P_MOV_S,       P_NEG_S,
+P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,
+P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_RSQRT_S,     P_COP1_Unknown,
 P_ADDA_S,      P_SUBA_S,      P_MULA_S,      P_COP1_Unknown,P_MADD_S,      P_MSUB_S,      P_MADDA_S,     P_MSUBA_S,
-P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_CVT_W,       P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown, 
-P_MAX_S,       P_MIN_S,       P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown, 
-P_C_F,         P_COP1_Unknown,P_C_EQ,        P_COP1_Unknown,P_C_LT,        P_COP1_Unknown,P_C_LE,        P_COP1_Unknown, 
-P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown, 
+P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_CVT_W,       P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,
+P_MAX_S,       P_MIN_S,       P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,
+P_C_F,         P_COP1_Unknown,P_C_EQ,        P_COP1_Unknown,P_C_LT,        P_COP1_Unknown,P_C_LE,        P_COP1_Unknown,
+P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,
 };
 /*
     FPU: Instructions encoded by the function field when opcode = COP1
@@ -902,23 +902,23 @@ P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP
 101 |  ---  |  ---  |  ---  |  ---  |  ---  |  ---  |  ---  |  ---  |
 110 |  ---  |  ---  |  ---  |  ---  |  ---  |  ---  |  ---  |  ---  |
 111 |  ---  |  ---  |  ---  |  ---  |  ---  |  ---  |  ---  |  ---  |
- hi |-------|-------|-------|-------|-------|-------|-------|-------|       
-*/  
-void (*COP1WPrintTable[64])(char *buf) = { 
-P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,   	
-P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,   
-P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,   
-P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,   
-P_CVT_S,       P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,   
-P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,   
-P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,   
-P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,   
+ hi |-------|-------|-------|-------|-------|-------|-------|-------|
+*/
+void (*COP1WPrintTable[64])(char *buf) = {
+P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,
+P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,
+P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,
+P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,
+P_CVT_S,       P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,
+P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,
+P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,
+P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,P_COP1_Unknown,
 };
 
 //*************************************************************
-//COP2 TABLES :) 
+//COP2 TABLES :)
 //*************************************************************
-/* 
+/*
    COP2: Instructions encoded by the fmt field when opcode = COP2.
     31--------26-25------21 ----------------------------------------0
     |  = COP2   |   fmt   |                                         |
@@ -935,9 +935,9 @@ void (*COP2PrintTable[32])(char *buf) = {
     P_COP2_Unknown, P_QMFC2,        P_CFC2,         P_COP2_Unknown, P_COP2_Unknown, P_QMTC2,        P_CTC2,         P_COP2_Unknown,
     P_COP2_BC2,     P_COP2_Unknown, P_COP2_Unknown, P_COP2_Unknown, P_COP2_Unknown, P_COP2_Unknown, P_COP2_Unknown, P_COP2_Unknown,
     P_COP2_SPECIAL, P_COP2_SPECIAL, P_COP2_SPECIAL, P_COP2_SPECIAL, P_COP2_SPECIAL, P_COP2_SPECIAL, P_COP2_SPECIAL, P_COP2_SPECIAL,
-	P_COP2_SPECIAL, P_COP2_SPECIAL, P_COP2_SPECIAL, P_COP2_SPECIAL, P_COP2_SPECIAL, P_COP2_SPECIAL, P_COP2_SPECIAL, P_COP2_SPECIAL,
+    P_COP2_SPECIAL, P_COP2_SPECIAL, P_COP2_SPECIAL, P_COP2_SPECIAL, P_COP2_SPECIAL, P_COP2_SPECIAL, P_COP2_SPECIAL, P_COP2_SPECIAL,
 
-    
+
 };
 /*
     BC2: Instructions encoded by the rt field when opcode = COP2 & rs field=BC1
@@ -949,14 +949,14 @@ void (*COP2PrintTable[32])(char *buf) = {
  01 |  ---  |  ---  |  ---  |  ---  |  ---  |  ---  |  ---  |  ---  |
  10 |  ---  |  ---  |  ---  |  ---  |  ---  |  ---  |  ---  |  ---  |
  11 |  ---  |  ---  |  ---  |  ---  |  ---  |  ---  |  ---  |  ---  |
- hi |-------|-------|-------|-------|-------|-------|-------|-------|   
+ hi |-------|-------|-------|-------|-------|-------|-------|-------|
  */
 void (*COP2BC2PrintTable[32])(char *buf) = {
     P_BC2F,         P_BC2T,         P_BC2FL,        P_BC2TL,        P_COP2_Unknown, P_COP2_Unknown, P_COP2_Unknown, P_COP2_Unknown,
     P_COP2_Unknown, P_COP2_Unknown, P_COP2_Unknown, P_COP2_Unknown, P_COP2_Unknown, P_COP2_Unknown, P_COP2_Unknown, P_COP2_Unknown,
     P_COP2_Unknown, P_COP2_Unknown, P_COP2_Unknown, P_COP2_Unknown, P_COP2_Unknown, P_COP2_Unknown, P_COP2_Unknown, P_COP2_Unknown,
     P_COP2_Unknown, P_COP2_Unknown, P_COP2_Unknown, P_COP2_Unknown, P_COP2_Unknown, P_COP2_Unknown, P_COP2_Unknown, P_COP2_Unknown,
-}; 
+};
 /*
     Special1 table : instructions encode by function field when opcode=COP2 & rs field=Special1
     31---------26---------------------------------------------------0
@@ -971,19 +971,19 @@ void (*COP2BC2PrintTable[32])(char *buf) = {
 101 |VADD   |VMADD  |VMUL   |VMAX   |VSUB   |VMSUB  |VOPMSUB|VMINI  |
 110 |VIADD  |VISUB  |VIADDI |  ---  |VIAND  |VIOR   |  ---  |  ---  |
 111 |VCALLMS|CALLMSR|  ---  |  ---  |  *1   |  *1   |  *1   |  *1   |
- hi |-------|-------|-------|-------|-------|-------|-------|-------| 
-    *1=see special2 table  
+ hi |-------|-------|-------|-------|-------|-------|-------|-------|
+    *1=see special2 table
 */
-void (*COP2SPECIAL1PrintTable[64])(char *buf) = 
-{ 
- P_VADDx,       P_VADDy,       P_VADDz,       P_VADDw,       P_VSUBx,        P_VSUBy,        P_VSUBz,        P_VSUBw,  
- P_VMADDx,      P_VMADDy,      P_VMADDz,      P_VMADDw,      P_VMSUBx,       P_VMSUBy,       P_VMSUBz,       P_VMSUBw, 
- P_VMAXx,       P_VMAXy,       P_VMAXz,       P_VMAXw,       P_VMINIx,       P_VMINIy,       P_VMINIz,       P_VMINIw, 
+void (*COP2SPECIAL1PrintTable[64])(char *buf) =
+{
+ P_VADDx,       P_VADDy,       P_VADDz,       P_VADDw,       P_VSUBx,        P_VSUBy,        P_VSUBz,        P_VSUBw,
+ P_VMADDx,      P_VMADDy,      P_VMADDz,      P_VMADDw,      P_VMSUBx,       P_VMSUBy,       P_VMSUBz,       P_VMSUBw,
+ P_VMAXx,       P_VMAXy,       P_VMAXz,       P_VMAXw,       P_VMINIx,       P_VMINIy,       P_VMINIz,       P_VMINIw,
  P_VMULx,       P_VMULy,       P_VMULz,       P_VMULw,       P_VMULq,        P_VMAXi,        P_VMULi,        P_VMINIi,
- P_VADDq,       P_VMADDq,      P_VADDi,       P_VMADDi,      P_VSUBq,        P_VMSUBq,       P_VSUbi,        P_VMSUBi, 
- P_VADD,        P_VMADD,       P_VMUL,        P_VMAX,        P_VSUB,         P_VMSUB,        P_VOPMSUB,      P_VMINI,  
+ P_VADDq,       P_VMADDq,      P_VADDi,       P_VMADDi,      P_VSUBq,        P_VMSUBq,       P_VSUbi,        P_VMSUBi,
+ P_VADD,        P_VMADD,       P_VMUL,        P_VMAX,        P_VSUB,         P_VMSUB,        P_VOPMSUB,      P_VMINI,
  P_VIADD,       P_VISUB,       P_VIADDI,      P_COP2_Unknown,P_VIAND,        P_VIOR,         P_COP2_Unknown, P_COP2_Unknown,
- P_VCALLMS,     P_CALLMSR,     P_COP2_Unknown,P_COP2_Unknown,P_COP2_SPECIAL2,P_COP2_SPECIAL2,P_COP2_SPECIAL2,P_COP2_SPECIAL2,  
+ P_VCALLMS,     P_CALLMSR,     P_COP2_Unknown,P_COP2_Unknown,P_COP2_SPECIAL2,P_COP2_SPECIAL2,P_COP2_SPECIAL2,P_COP2_SPECIAL2,
 
 };
 /*
@@ -1006,22 +1006,22 @@ void (*COP2SPECIAL1PrintTable[64])(char *buf) =
 1010 |  ---  |  ---  |  ---  |  ---  |  ---  |  ---  |  ---  |  ---  |
 1011 |  ---  |  ---  |  ---  |  ---  |  ---  |  ---  |  ---  |  ---  |
 1100 |  ---  |  ---  |  ---  |  ---  |  ---  |  ---  |  ---  |  ---  |
-1101 |  ---  |  ---  |  ---  |  ---  |  ---  |  ---  |  ---  |  ---  | 
+1101 |  ---  |  ---  |  ---  |  ---  |  ---  |  ---  |  ---  |  ---  |
 1110 |  ---  |  ---  |  ---  |  ---  |  ---  |  ---  |  ---  |  ---  |
 1111 |  ---  |  ---  |  ---  |  ---  |  ---  |  ---  |  ---  |  ---  |
- hi  |-------|-------|-------|-------|-------|-------|-------|-------| 
+ hi  |-------|-------|-------|-------|-------|-------|-------|-------|
 */
-void (*COP2SPECIAL2PrintTable[128])(char *buf) = 
+void (*COP2SPECIAL2PrintTable[128])(char *buf) =
 {
  P_VADDAx      ,P_VADDAy      ,P_VADDAz      ,P_VADDAw      ,P_VSUBAx      ,P_VSUBAy      ,P_VSUBAz      ,P_VSUBAw,
  P_VMADDAx     ,P_VMADDAy     ,P_VMADDAz     ,P_VMADDAw     ,P_VMSUBAx     ,P_VMSUBAy     ,P_VMSUBAz     ,P_VMSUBAw,
  P_VITOF0      ,P_VITOF4      ,P_VITOF12     ,P_VITOF15     ,P_VFTOI0      ,P_VFTOI4      ,P_VFTOI12     ,P_VFTOI15,
  P_VMULAx      ,P_VMULAy      ,P_VMULAz      ,P_VMULAw      ,P_VMULAq      ,P_VABS        ,P_VMULAi      ,P_VCLIPw,
  P_VADDAq      ,P_VMADDAq     ,P_VADDAi      ,P_VMADDAi     ,P_VSUBAq      ,P_VMSUBAq     ,P_VSUBAi      ,P_VMSUBAi,
- P_VADDA       ,P_VMADDA      ,P_VMULA       ,P_COP2_Unknown,P_VSUBA       ,P_VMSUBA      ,P_VOPMULA     ,P_VNOP,   
- P_VMONE       ,P_VMR32       ,P_COP2_Unknown,P_COP2_Unknown,P_VLQI        ,P_VSQI        ,P_VLQD        ,P_VSQD,   
- P_VDIV        ,P_VSQRT       ,P_VRSQRT      ,P_VWAITQ      ,P_VMTIR       ,P_VMFIR       ,P_VILWR       ,P_VISWR,  
- P_VRNEXT      ,P_VRGET       ,P_VRINIT      ,P_VRXOR       ,P_COP2_Unknown,P_COP2_Unknown,P_COP2_Unknown,P_COP2_Unknown, 
+ P_VADDA       ,P_VMADDA      ,P_VMULA       ,P_COP2_Unknown,P_VSUBA       ,P_VMSUBA      ,P_VOPMULA     ,P_VNOP,
+ P_VMONE       ,P_VMR32       ,P_COP2_Unknown,P_COP2_Unknown,P_VLQI        ,P_VSQI        ,P_VLQD        ,P_VSQD,
+ P_VDIV        ,P_VSQRT       ,P_VRSQRT      ,P_VWAITQ      ,P_VMTIR       ,P_VMFIR       ,P_VILWR       ,P_VISWR,
+ P_VRNEXT      ,P_VRGET       ,P_VRINIT      ,P_VRXOR       ,P_COP2_Unknown,P_COP2_Unknown,P_COP2_Unknown,P_COP2_Unknown,
  P_COP2_Unknown,P_COP2_Unknown,P_COP2_Unknown,P_COP2_Unknown,P_COP2_Unknown,P_COP2_Unknown,P_COP2_Unknown,P_COP2_Unknown,
  P_COP2_Unknown,P_COP2_Unknown,P_COP2_Unknown,P_COP2_Unknown,P_COP2_Unknown,P_COP2_Unknown,P_COP2_Unknown,P_COP2_Unknown,
  P_COP2_Unknown,P_COP2_Unknown,P_COP2_Unknown,P_COP2_Unknown,P_COP2_Unknown,P_COP2_Unknown,P_COP2_Unknown,P_COP2_Unknown,
@@ -1037,15 +1037,15 @@ static char dbuf[1024];
 static char obuf[1024];
 
 char *disR5900Fasm(u32 code, u32 pc) {
-	u32 scode = cpuRegs.code;
-	opcode_addr = pc;
-	cpuRegs.code = code;
-	OpcodePrintTable[(code) >> 26](dbuf);
+    u32 scode = cpuRegs.code;
+    opcode_addr = pc;
+    cpuRegs.code = code;
+    OpcodePrintTable[(code) >> 26](dbuf);
 
-	sprintf(obuf, "%08lX:\t%s", pc, dbuf);
+    sprintf(obuf, "%08lX:\t%s", pc, dbuf);
 
-	cpuRegs.code = scode;
-	return obuf;
+    cpuRegs.code = scode;
+    return obuf;
 }
 
 void P_SpecialOpcode(char *buf)
@@ -1131,7 +1131,7 @@ void P_COP2_SPECIAL(char *buf)
 void P_COP2_SPECIAL2(char *buf)
 {
 
-	COP2SPECIAL2PrintTable[(cpuRegs.code & 0x3) |  ((cpuRegs.code >> 4) & 0x7c)](buf);
+    COP2SPECIAL2PrintTable[(cpuRegs.code & 0x3) |  ((cpuRegs.code >> 4) & 0x7c)](buf);
 
 }
 
@@ -1150,12 +1150,12 @@ void P_COP1_Unknown(char *buf)
 }
 void P_COP2_Unknown(char *buf)
 {
-	strcpy(buf,"COP2 ??");
+    strcpy(buf,"COP2 ??");
 }
 
 void P_MMI_Unknown(char *buf)
 {
-	strcpy(buf,"MMI ??");
+    strcpy(buf,"MMI ??");
 }
 
 
@@ -1164,8 +1164,8 @@ void P_MMI_Unknown(char *buf)
 
 //*****************SOME DECODE STUFF***************************
 #define dFindSym(i) { \
-	char *str = disR5900GetSym(i); \
-	if (str != NULL) sprintf(buf, "%s %s", buf, str); \
+    char *str = disR5900GetSym(i); \
+    if (str != NULL) sprintf(buf, "%s %s", buf, str); \
 }
 
 char *jump_decode(void)
@@ -1190,7 +1190,7 @@ char *offset_decode(void)
 
 //********************* Standard Opcodes***********************
 void P_J(char *buf)      { sprintf(buf, "j\t%s",                  jump_decode());}
-void P_JAL(char *buf)    { sprintf(buf, "jal\t%s",                jump_decode());} 
+void P_JAL(char *buf)    { sprintf(buf, "jal\t%s",                jump_decode());}
 void P_BEQ(char *buf)    { sprintf(buf, "beq\t%s, %s, %s",        GPR_REG[DECODE_RS], GPR_REG[DECODE_RT], offset_decode()); }
 void P_BNE(char *buf)    { sprintf(buf, "bne\t%s, %s, %s",        GPR_REG[DECODE_RS], GPR_REG[DECODE_RT], offset_decode()); }
 void P_BLEZ(char *buf)   { sprintf(buf, "blez\t%s, %s",           GPR_REG[DECODE_RS], offset_decode()); }
@@ -1271,7 +1271,7 @@ void P_MTLO(char *buf)    { sprintf(buf, "mtlo\t%s",          GPR_REG[DECODE_RS]
 void P_DSLLV(char *buf)   { sprintf(buf, "dsllv\t%s, %s, %s", GPR_REG[DECODE_RD], GPR_REG[DECODE_RT], GPR_REG[DECODE_RS]); }
 void P_DSRLV(char *buf)   { sprintf(buf, "dsrlv\t%s, %s, %s", GPR_REG[DECODE_RD], GPR_REG[DECODE_RT], GPR_REG[DECODE_RS]); }
 void P_DSRAV(char *buf)   { sprintf(buf, "dsrav\t%s, %s, %s", GPR_REG[DECODE_RD], GPR_REG[DECODE_RT], GPR_REG[DECODE_RS]); }
-void P_MULT(char *buf)    { sprintf(buf, "mult\t%s, %s, %s", GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]);}	
+void P_MULT(char *buf)    { sprintf(buf, "mult\t%s, %s, %s", GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]);}
 void P_MULTU(char *buf)   { sprintf(buf, "multu\t%s, %s, %s", GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]);}
 void P_DIV(char *buf)     { sprintf(buf, "div\t%s, %s",       GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); }
 void P_DIVU(char *buf)    { sprintf(buf, "divu\t%s, %s",      GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); }
@@ -1292,7 +1292,7 @@ void P_DSUBU(char *buf)   { sprintf(buf, "dsubu\t%s, %s, %s", GPR_REG[DECODE_RD]
 void P_TGE(char *buf)     { sprintf(buf, "tge\t%s, %s",       GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); }
 void P_TGEU(char *buf)    { sprintf(buf, "tgeu\t%s, %s",      GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); }
 void P_TLT(char *buf)     { sprintf(buf, "tlt\t%s, %s",       GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); }
-void P_TLTU(char *buf)    { sprintf(buf, "tltu\t%s, %s",      GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); } 
+void P_TLTU(char *buf)    { sprintf(buf, "tltu\t%s, %s",      GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); }
 void P_TEQ(char *buf)     { sprintf(buf, "teq\t%s, %s",       GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); }
 void P_TNE(char *buf)     { sprintf(buf, "tne\t%s, %s",       GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); }
 void P_DSLL(char *buf)    { sprintf(buf, "dsll\t%s, %s, 0x%02lX",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RT], DECODE_SA); }
@@ -1303,7 +1303,7 @@ void P_DSRL32(char *buf)  { sprintf(buf, "dsrl32\t%s, %s, 0x%02lX", GPR_REG[DECO
 void P_DSRA32(char *buf)  { sprintf(buf, "dsra32\t%s, %s, 0x%02lX", GPR_REG[DECODE_RD], GPR_REG[DECODE_RT], DECODE_SA); }
 void P_MOVZ(char *buf)    { sprintf(buf, "movz\t%s, %s, %s", GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); }
 void P_MOVN(char *buf)    { sprintf(buf, "movn\t%s, %s, %s", GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); }
-void P_MFSA(char *buf)    { sprintf(buf, "mfsa\t%s",          GPR_REG[DECODE_RD]);} 
+void P_MFSA(char *buf)    { sprintf(buf, "mfsa\t%s",          GPR_REG[DECODE_RD]);}
 void P_MTSA(char *buf)    { sprintf(buf, "mtsa\t%s",          GPR_REG[DECODE_RS]);}
 //*** unsupport (yet) cpu opcodes
 void P_SYSCALL(char *buf) { strcpy(buf,  "syscall ---");/*sprintf(buf, "syscall\t0x%05X",   DECODE_SYSCALL);*/}
@@ -1354,91 +1354,91 @@ void P_PSRAW(char *buf)   { sprintf(buf,  "psraw   \t%s, %s, 0x%02lX",   GPR_REG
 //***************************END OF SPECIAL OPCODES******************
 //*************************MMI0 OPCODES************************
 
-void P_PADDW(char *buf){  sprintf(buf,  "paddw\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); }  
-void P_PSUBW(char *buf){  sprintf(buf,  "psubw\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); }  
-void P_PCGTW(char *buf){  sprintf(buf,  "pcgtw\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); }  
-void P_PMAXW(char *buf){  sprintf(buf,  "pmaxw\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); } 
-void P_PADDH(char *buf){  sprintf(buf,  "paddh\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); }  
-void P_PSUBH(char *buf){  sprintf(buf,  "psubh\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); }  
-void P_PCGTH(char *buf){  sprintf(buf,  "pcgth\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); }  
-void P_PMAXH(char *buf){  sprintf(buf,  "pmaxh\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); } 
-void P_PADDB(char *buf){  sprintf(buf,  "paddb\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); }  
-void P_PSUBB(char *buf){  sprintf(buf,  "psubb\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); }  
+void P_PADDW(char *buf){  sprintf(buf,  "paddw\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); }
+void P_PSUBW(char *buf){  sprintf(buf,  "psubw\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); }
+void P_PCGTW(char *buf){  sprintf(buf,  "pcgtw\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); }
+void P_PMAXW(char *buf){  sprintf(buf,  "pmaxw\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); }
+void P_PADDH(char *buf){  sprintf(buf,  "paddh\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); }
+void P_PSUBH(char *buf){  sprintf(buf,  "psubh\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); }
+void P_PCGTH(char *buf){  sprintf(buf,  "pcgth\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); }
+void P_PMAXH(char *buf){  sprintf(buf,  "pmaxh\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); }
+void P_PADDB(char *buf){  sprintf(buf,  "paddb\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); }
+void P_PSUBB(char *buf){  sprintf(buf,  "psubb\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); }
 void P_PCGTB(char *buf){  sprintf(buf,  "pcgtb\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); }
-void P_PADDSW(char *buf){ sprintf(buf,  "paddsw\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); } 
-void P_PSUBSW(char *buf){ sprintf(buf,  "psubsw\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); } 
-void P_PEXTLW(char *buf){ sprintf(buf,  "pextlw\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); }  
-void P_PPACW(char *buf) { sprintf(buf,  "ppacw\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); } 
-void P_PADDSH(char *buf){ sprintf(buf,  "paddsh\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); } 
+void P_PADDSW(char *buf){ sprintf(buf,  "paddsw\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); }
+void P_PSUBSW(char *buf){ sprintf(buf,  "psubsw\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); }
+void P_PEXTLW(char *buf){ sprintf(buf,  "pextlw\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); }
+void P_PPACW(char *buf) { sprintf(buf,  "ppacw\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); }
+void P_PADDSH(char *buf){ sprintf(buf,  "paddsh\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); }
 void P_PSUBSH(char *buf){ sprintf(buf,  "psubsh\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); }
-void P_PEXTLH(char *buf){ sprintf(buf,  "pextlh\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); }  
-void P_PPACH(char *buf) { sprintf(buf,  "ppach\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); } 
-void P_PADDSB(char *buf){ sprintf(buf,  "paddsb\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); } 
-void P_PSUBSB(char *buf){ sprintf(buf,  "psubsb\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); } 
-void P_PEXTLB(char *buf){ sprintf(buf,  "pextlb\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); }  
-void P_PPACB(char *buf) { sprintf(buf,  "ppacb\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); } 
-void P_PEXT5(char *buf) { sprintf(buf,  "pext5\t%s, %s",      GPR_REG[DECODE_RD], GPR_REG[DECODE_RT]); }  
-void P_PPAC5(char *buf) { sprintf(buf,  "ppac5\t%s, %s",      GPR_REG[DECODE_RD], GPR_REG[DECODE_RT]); } 
+void P_PEXTLH(char *buf){ sprintf(buf,  "pextlh\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); }
+void P_PPACH(char *buf) { sprintf(buf,  "ppach\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); }
+void P_PADDSB(char *buf){ sprintf(buf,  "paddsb\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); }
+void P_PSUBSB(char *buf){ sprintf(buf,  "psubsb\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); }
+void P_PEXTLB(char *buf){ sprintf(buf,  "pextlb\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); }
+void P_PPACB(char *buf) { sprintf(buf,  "ppacb\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); }
+void P_PEXT5(char *buf) { sprintf(buf,  "pext5\t%s, %s",      GPR_REG[DECODE_RD], GPR_REG[DECODE_RT]); }
+void P_PPAC5(char *buf) { sprintf(buf,  "ppac5\t%s, %s",      GPR_REG[DECODE_RD], GPR_REG[DECODE_RT]); }
 //**********END OF MMI0 OPCODES*********************************
 //**********MMI1 OPCODES**************************************
 void P_PABSW(char *buf){  sprintf(buf,  "pabsw%s, %s",      GPR_REG[DECODE_RD], GPR_REG[DECODE_RT]); }
 void P_PCEQW(char *buf){  sprintf(buf,  "pceqw\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); }
-void P_PMINW(char *buf){  sprintf(buf,  "pminw\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); } 
+void P_PMINW(char *buf){  sprintf(buf,  "pminw\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); }
 void P_PADSBH(char *buf){ sprintf(buf,  "padsbh\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); }
 void P_PABSH(char *buf){  sprintf(buf,  "pabsh%s, %s",      GPR_REG[DECODE_RD], GPR_REG[DECODE_RT]); }
 void P_PCEQH(char *buf){  sprintf(buf,  "pceqh\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); }
-void P_PMINH(char *buf){  sprintf(buf,  "pminh\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); }  
-void P_PCEQB(char *buf){  sprintf(buf,  "pceqb\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); } 
+void P_PMINH(char *buf){  sprintf(buf,  "pminh\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); }
+void P_PCEQB(char *buf){  sprintf(buf,  "pceqb\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); }
 void P_PADDUW(char *buf){ sprintf(buf,  "padduw\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); }
-void P_PSUBUW(char *buf){ sprintf(buf,  "psubuw\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); } 
-void P_PEXTUW(char *buf){ sprintf(buf,  "pextuw\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); }  
+void P_PSUBUW(char *buf){ sprintf(buf,  "psubuw\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); }
+void P_PEXTUW(char *buf){ sprintf(buf,  "pextuw\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); }
 void P_PADDUH(char *buf){ sprintf(buf,  "padduh\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); }
-void P_PSUBUH(char *buf){ sprintf(buf,  "psubuh\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); } 
-void P_PEXTUH(char *buf){ sprintf(buf,  "pextuh\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); } 
+void P_PSUBUH(char *buf){ sprintf(buf,  "psubuh\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); }
+void P_PEXTUH(char *buf){ sprintf(buf,  "pextuh\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); }
 void P_PADDUB(char *buf){ sprintf(buf,  "paddub\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); }
 void P_PSUBUB(char *buf){ sprintf(buf,  "psubub\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); }
 void P_PEXTUB(char *buf){ sprintf(buf,  "pextub\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); }
-void P_QFSRV(char *buf) { sprintf(buf,  "qfsrv\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); } 
+void P_QFSRV(char *buf) { sprintf(buf,  "qfsrv\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); }
 //********END OF MMI1 OPCODES***********************************
 //*********MMI2 OPCODES***************************************
-void P_PMADDW(char *buf){ sprintf(buf,  "pmaddw\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); } 
-void P_PSLLVW(char *buf){ sprintf(buf,  "psllvw\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); } 
-void P_PSRLVW(char *buf){ sprintf(buf,  "psrlvw\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); } 
-void P_PMSUBW(char *buf){ sprintf(buf,  "msubw\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); } 
+void P_PMADDW(char *buf){ sprintf(buf,  "pmaddw\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); }
+void P_PSLLVW(char *buf){ sprintf(buf,  "psllvw\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); }
+void P_PSRLVW(char *buf){ sprintf(buf,  "psrlvw\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); }
+void P_PMSUBW(char *buf){ sprintf(buf,  "msubw\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); }
 void P_PMFHI(char *buf){  sprintf(buf,  "pmfhi\t%s",          GPR_REG[DECODE_RD]); }
-void P_PMFLO(char *buf){  sprintf(buf,  "pmflo\t%s",          GPR_REG[DECODE_RD]); } 
-void P_PINTH(char *buf){  sprintf(buf,  "pinth\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); } 
-void P_PMULTW(char *buf){ sprintf(buf,  "pmultw\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); } 
-void P_PDIVW(char *buf){  sprintf(buf,  "pdivw\t%s, %s",      GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); } 
-void P_PCPYLD(char *buf){ sprintf(buf,  "pcpyld\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); } 
-void P_PMADDH(char *buf){ sprintf(buf,  "pmaddh\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); } 
-void P_PHMADH(char *buf){ sprintf(buf,  "phmadh\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); } 
+void P_PMFLO(char *buf){  sprintf(buf,  "pmflo\t%s",          GPR_REG[DECODE_RD]); }
+void P_PINTH(char *buf){  sprintf(buf,  "pinth\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); }
+void P_PMULTW(char *buf){ sprintf(buf,  "pmultw\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); }
+void P_PDIVW(char *buf){  sprintf(buf,  "pdivw\t%s, %s",      GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); }
+void P_PCPYLD(char *buf){ sprintf(buf,  "pcpyld\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); }
+void P_PMADDH(char *buf){ sprintf(buf,  "pmaddh\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); }
+void P_PHMADH(char *buf){ sprintf(buf,  "phmadh\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); }
 void P_PAND(char *buf){   sprintf(buf,  "pand\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); }
 void P_PXOR(char *buf){   sprintf(buf,  "pxor\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); }
-void P_PMSUBH(char *buf){ sprintf(buf,  "pmsubh\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); } 
-void P_PHMSBH(char *buf){ sprintf(buf,  "phmsbh\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); } 
-void P_PEXEH(char *buf){  sprintf(buf,  "pexeh\t%s, %s",      GPR_REG[DECODE_RD], GPR_REG[DECODE_RT]); } 
-void P_PREVH(char *buf){  sprintf(buf,  "prevh\t%s, %s",      GPR_REG[DECODE_RD], GPR_REG[DECODE_RT]); }  
-void P_PMULTH(char *buf){ sprintf(buf,  "pmulth\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); } 
-void P_PDIVBW(char *buf){ sprintf(buf,  "pdivbw\t%s, %s",      GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); } 
-void P_PEXEW(char *buf){  sprintf(buf,  "pexew\t%s, %s",      GPR_REG[DECODE_RD], GPR_REG[DECODE_RT]); } 
-void P_PROT3W(char *buf){ sprintf(buf,  "prot3w\t%s, %s",      GPR_REG[DECODE_RD], GPR_REG[DECODE_RT]); } 
+void P_PMSUBH(char *buf){ sprintf(buf,  "pmsubh\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); }
+void P_PHMSBH(char *buf){ sprintf(buf,  "phmsbh\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); }
+void P_PEXEH(char *buf){  sprintf(buf,  "pexeh\t%s, %s",      GPR_REG[DECODE_RD], GPR_REG[DECODE_RT]); }
+void P_PREVH(char *buf){  sprintf(buf,  "prevh\t%s, %s",      GPR_REG[DECODE_RD], GPR_REG[DECODE_RT]); }
+void P_PMULTH(char *buf){ sprintf(buf,  "pmulth\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); }
+void P_PDIVBW(char *buf){ sprintf(buf,  "pdivbw\t%s, %s",      GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); }
+void P_PEXEW(char *buf){  sprintf(buf,  "pexew\t%s, %s",      GPR_REG[DECODE_RD], GPR_REG[DECODE_RT]); }
+void P_PROT3W(char *buf){ sprintf(buf,  "prot3w\t%s, %s",      GPR_REG[DECODE_RD], GPR_REG[DECODE_RT]); }
 //*****END OF MMI2 OPCODES***********************************
 //*************************MMI3 OPCODES************************
 void P_PMADDUW(char *buf){ sprintf(buf, "pmadduw\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RT], GPR_REG[DECODE_RS]); }
-void P_PSRAVW(char *buf){  sprintf(buf, "psravw\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RT], GPR_REG[DECODE_RS]); }  
+void P_PSRAVW(char *buf){  sprintf(buf, "psravw\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RT], GPR_REG[DECODE_RS]); }
 void P_PMTHI(char *buf){   sprintf(buf, "pmthi\t%s",          GPR_REG[DECODE_RS]); }
 void P_PMTLO(char *buf){   sprintf(buf, "pmtlo\t%s",          GPR_REG[DECODE_RS]); }
-void P_PINTEH(char *buf){  sprintf(buf, "pinteh\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); } 
-void P_PMULTUW(char *buf){ sprintf(buf, "pmultuw\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); } 
+void P_PINTEH(char *buf){  sprintf(buf, "pinteh\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); }
+void P_PMULTUW(char *buf){ sprintf(buf, "pmultuw\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); }
 void P_PDIVUW(char *buf){  sprintf(buf, "pdivuw\t%s, %s",       GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); }
-void P_PCPYUD(char *buf){  sprintf(buf, "pcpyud\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); } 
+void P_PCPYUD(char *buf){  sprintf(buf, "pcpyud\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); }
 void P_POR(char *buf){     sprintf(buf, "por\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); }
-void P_PNOR(char *buf){    sprintf(buf, "pnor\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); }  
+void P_PNOR(char *buf){    sprintf(buf, "pnor\t%s, %s, %s",   GPR_REG[DECODE_RD], GPR_REG[DECODE_RS], GPR_REG[DECODE_RT]); }
 void P_PEXCH(char *buf){   sprintf(buf, "pexch\t%s, %s",       GPR_REG[DECODE_RD], GPR_REG[DECODE_RT]);}
-void P_PCPYH(char *buf){   sprintf(buf, "pcpyh\t%s, %s",       GPR_REG[DECODE_RD], GPR_REG[DECODE_RT]);} 
+void P_PCPYH(char *buf){   sprintf(buf, "pcpyh\t%s, %s",       GPR_REG[DECODE_RD], GPR_REG[DECODE_RT]);}
 void P_PEXCW(char *buf){   sprintf(buf, "pexcw\t%s, %s",       GPR_REG[DECODE_RD], GPR_REG[DECODE_RT]);}
-//**********************END OF MMI3 OPCODES******************** 
+//**********************END OF MMI3 OPCODES********************
 //****************************************************************************
 //** COP0                                                                   **
 //****************************************************************************
@@ -1469,21 +1469,21 @@ void P_BC1F(char *buf){   sprintf(buf, "bc1f\t%s",          offset_decode()); }
 void P_BC1T(char *buf){   sprintf(buf, "bc1t\t%s",          offset_decode()); }
 void P_BC1FL(char *buf){  sprintf(buf, "bc1fl\t%s",         offset_decode()); }
 void P_BC1TL(char *buf){  sprintf(buf, "bc1tl\t%s",         offset_decode()); }
-void P_ADD_S(char *buf){  sprintf(buf, "add.s\t%s, %s, %s", COP1_REG_FP[DECODE_FD], COP1_REG_FP[DECODE_FS], COP1_REG_FP[DECODE_FT]);}  
-void P_SUB_S(char *buf){  sprintf(buf, "sub.s\t%s, %s, %s", COP1_REG_FP[DECODE_FD], COP1_REG_FP[DECODE_FS], COP1_REG_FP[DECODE_FT]);}  
-void P_MUL_S(char *buf){  sprintf(buf, "mul.s\t%s, %s, %s", COP1_REG_FP[DECODE_FD], COP1_REG_FP[DECODE_FS], COP1_REG_FP[DECODE_FT]);}  
-void P_DIV_S(char *buf){  sprintf(buf, "div.s\t%s, %s, %s", COP1_REG_FP[DECODE_FD], COP1_REG_FP[DECODE_FS], COP1_REG_FP[DECODE_FT]); }  
-void P_SQRT_S(char *buf){ sprintf(buf, "sqrt.s\t%s, %s",   COP1_REG_FP[DECODE_FD], COP1_REG_FP[DECODE_FT]); } 
-void P_ABS_S(char *buf){  sprintf(buf, "abs.s\t%s, %s",     COP1_REG_FP[DECODE_FD], COP1_REG_FP[DECODE_FS]); }  
-void P_MOV_S(char *buf){  sprintf(buf, "mov.s\t%s, %s",     COP1_REG_FP[DECODE_FD], COP1_REG_FP[DECODE_FS]); } 
-void P_NEG_S(char *buf){  sprintf(buf, "neg.s\t%s, %s",     COP1_REG_FP[DECODE_FD], COP1_REG_FP[DECODE_FS]);} 
-void P_RSQRT_S(char *buf){sprintf(buf, "rsqrt.s\t%s, %s, %s", COP1_REG_FP[DECODE_FD], COP1_REG_FP[DECODE_FS], COP1_REG_FP[DECODE_FT]);}  
-void P_ADDA_S(char *buf){ sprintf(buf, "adda.s\t%s, %s",     COP1_REG_FP[DECODE_FS], COP1_REG_FP[DECODE_FT]); } 
-void P_SUBA_S(char *buf){ sprintf(buf, "suba.s\t%s, %s",     COP1_REG_FP[DECODE_FS], COP1_REG_FP[DECODE_FT]); } 
+void P_ADD_S(char *buf){  sprintf(buf, "add.s\t%s, %s, %s", COP1_REG_FP[DECODE_FD], COP1_REG_FP[DECODE_FS], COP1_REG_FP[DECODE_FT]);}
+void P_SUB_S(char *buf){  sprintf(buf, "sub.s\t%s, %s, %s", COP1_REG_FP[DECODE_FD], COP1_REG_FP[DECODE_FS], COP1_REG_FP[DECODE_FT]);}
+void P_MUL_S(char *buf){  sprintf(buf, "mul.s\t%s, %s, %s", COP1_REG_FP[DECODE_FD], COP1_REG_FP[DECODE_FS], COP1_REG_FP[DECODE_FT]);}
+void P_DIV_S(char *buf){  sprintf(buf, "div.s\t%s, %s, %s", COP1_REG_FP[DECODE_FD], COP1_REG_FP[DECODE_FS], COP1_REG_FP[DECODE_FT]); }
+void P_SQRT_S(char *buf){ sprintf(buf, "sqrt.s\t%s, %s",   COP1_REG_FP[DECODE_FD], COP1_REG_FP[DECODE_FT]); }
+void P_ABS_S(char *buf){  sprintf(buf, "abs.s\t%s, %s",     COP1_REG_FP[DECODE_FD], COP1_REG_FP[DECODE_FS]); }
+void P_MOV_S(char *buf){  sprintf(buf, "mov.s\t%s, %s",     COP1_REG_FP[DECODE_FD], COP1_REG_FP[DECODE_FS]); }
+void P_NEG_S(char *buf){  sprintf(buf, "neg.s\t%s, %s",     COP1_REG_FP[DECODE_FD], COP1_REG_FP[DECODE_FS]);}
+void P_RSQRT_S(char *buf){sprintf(buf, "rsqrt.s\t%s, %s, %s", COP1_REG_FP[DECODE_FD], COP1_REG_FP[DECODE_FS], COP1_REG_FP[DECODE_FT]);}
+void P_ADDA_S(char *buf){ sprintf(buf, "adda.s\t%s, %s",     COP1_REG_FP[DECODE_FS], COP1_REG_FP[DECODE_FT]); }
+void P_SUBA_S(char *buf){ sprintf(buf, "suba.s\t%s, %s",     COP1_REG_FP[DECODE_FS], COP1_REG_FP[DECODE_FT]); }
 void P_MULA_S(char *buf){ sprintf(buf, "mula.s\t%s, %s",   COP1_REG_FP[DECODE_FS], COP1_REG_FP[DECODE_FT]); }
-void P_MADD_S(char *buf){ sprintf(buf, "madd.s\t%s, %s, %s", COP1_REG_FP[DECODE_FD], COP1_REG_FP[DECODE_FS], COP1_REG_FP[DECODE_FT]); } 
-void P_MSUB_S(char *buf){ sprintf(buf, "msub.s\t%s, %s, %s", COP1_REG_FP[DECODE_FD], COP1_REG_FP[DECODE_FS], COP1_REG_FP[DECODE_FT]); } 
-void P_MADDA_S(char *buf){sprintf(buf, "madda.s\t%s, %s",   COP1_REG_FP[DECODE_FS], COP1_REG_FP[DECODE_FT]); } 
+void P_MADD_S(char *buf){ sprintf(buf, "madd.s\t%s, %s, %s", COP1_REG_FP[DECODE_FD], COP1_REG_FP[DECODE_FS], COP1_REG_FP[DECODE_FT]); }
+void P_MSUB_S(char *buf){ sprintf(buf, "msub.s\t%s, %s, %s", COP1_REG_FP[DECODE_FD], COP1_REG_FP[DECODE_FS], COP1_REG_FP[DECODE_FT]); }
+void P_MADDA_S(char *buf){sprintf(buf, "madda.s\t%s, %s",   COP1_REG_FP[DECODE_FS], COP1_REG_FP[DECODE_FT]); }
 void P_MSUBA_S(char *buf){sprintf(buf, "msuba.s\t%s, %s",   COP1_REG_FP[DECODE_FS], COP1_REG_FP[DECODE_FT]); }
 void P_CVT_W(char *buf){  sprintf(buf, "cvt.w.s\t%s, %s",   COP1_REG_FP[DECODE_FD], COP1_REG_FP[DECODE_FS]); }
 void P_MAX_S(char *buf){  sprintf(buf, "max.s\t%s, %s, %s", COP1_REG_FP[DECODE_FD], COP1_REG_FP[DECODE_FS], COP1_REG_FP[DECODE_FT]);}
@@ -1491,7 +1491,7 @@ void P_MIN_S(char *buf){  sprintf(buf, "min.s\t%s, %s, %s", COP1_REG_FP[DECODE_F
 void P_C_F(char *buf){    sprintf(buf, "c.f.s\t%s, %s",     COP1_REG_FP[DECODE_FS], COP1_REG_FP[DECODE_FT]); }
 void P_C_EQ(char *buf){   sprintf(buf, "c.eq.s\t%s, %s",    COP1_REG_FP[DECODE_FS], COP1_REG_FP[DECODE_FT]); }
 void P_C_LT(char *buf){   sprintf(buf, "c.lt.s\t%s, %s",    COP1_REG_FP[DECODE_FS], COP1_REG_FP[DECODE_FT]); }
-void P_C_LE(char *buf){   sprintf(buf, "c.le.s\t%s, %s",    COP1_REG_FP[DECODE_FS], COP1_REG_FP[DECODE_FT]); } 
+void P_C_LE(char *buf){   sprintf(buf, "c.le.s\t%s, %s",    COP1_REG_FP[DECODE_FS], COP1_REG_FP[DECODE_FT]); }
 void P_CVT_S(char *buf){  sprintf(buf, "cvt.s.w\t%s, %s",   COP1_REG_FP[DECODE_FD], COP1_REG_FP[DECODE_FS]); }
 //****************************************************************************
 //** END OF COP1                                                            **
@@ -1499,10 +1499,10 @@ void P_CVT_S(char *buf){  sprintf(buf, "cvt.s.w\t%s, %s",   COP1_REG_FP[DECODE_F
 //****************************************************************************
 //** COP2 - (VU0)                                                           **
 //****************************************************************************
-void P_QMFC2(char *buf){   sprintf(buf, "qmfc2\t%s, %s",      GPR_REG[DECODE_RT], COP2_REG_FP[DECODE_FS]);  } 
-void P_CFC2(char *buf){    sprintf(buf, "cfc2\t%s, %s",      GPR_REG[DECODE_RT], COP2_REG_CTL[DECODE_FS]); } 
-void P_QMTC2(char *buf){   sprintf(buf, "qmtc2\t%s, %s",      GPR_REG[DECODE_RT], COP2_REG_FP[DECODE_FS]); } 
-void P_CTC2(char *buf){    sprintf(buf, "ctc2\t%s, %s",      GPR_REG[DECODE_RT], COP2_REG_CTL[DECODE_FS]); }  
+void P_QMFC2(char *buf){   sprintf(buf, "qmfc2\t%s, %s",      GPR_REG[DECODE_RT], COP2_REG_FP[DECODE_FS]);  }
+void P_CFC2(char *buf){    sprintf(buf, "cfc2\t%s, %s",      GPR_REG[DECODE_RT], COP2_REG_CTL[DECODE_FS]); }
+void P_QMTC2(char *buf){   sprintf(buf, "qmtc2\t%s, %s",      GPR_REG[DECODE_RT], COP2_REG_FP[DECODE_FS]); }
+void P_CTC2(char *buf){    sprintf(buf, "ctc2\t%s, %s",      GPR_REG[DECODE_RT], COP2_REG_CTL[DECODE_FS]); }
 void P_BC2F(char *buf){    sprintf(buf, "bc2f\t%s",          offset_decode()); }
 void P_BC2T(char *buf){    sprintf(buf, "bc2t\t%s",          offset_decode()); }
 void P_BC2FL(char *buf){   sprintf(buf, "bc2fl\t%s",         offset_decode()); }
@@ -1526,126 +1526,126 @@ const char *dest_string(void)
  return (const char *)str;
 }
 
-void P_VADDx(char *buf){sprintf(buf, "vaddx.%s  %s, %s, %sx",   dest_string(),COP2_REG_FP[DECODE_FD], COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]); }       
-void P_VADDy(char *buf){sprintf(buf, "vaddy.%s  %s, %s, %sy",   dest_string(),COP2_REG_FP[DECODE_FD], COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]);  }        
-void P_VADDz(char *buf){sprintf(buf, "vaddz.%s  %s, %s, %sz",   dest_string(),COP2_REG_FP[DECODE_FD], COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]); }        
-void P_VADDw(char *buf){sprintf(buf, "vaddw.%s  %s, %s, %sw",   dest_string(),COP2_REG_FP[DECODE_FD], COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]); }        
-void P_VSUBx(char *buf){sprintf(buf, "vsubx.%s  %s, %s, %sx",   dest_string(),COP2_REG_FP[DECODE_FD], COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]);  }         
-void P_VSUBy(char *buf){sprintf(buf, "vsuby.%s  %s, %s, %sy",   dest_string(),COP2_REG_FP[DECODE_FD], COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]); }         
-void P_VSUBz(char *buf){sprintf(buf, "vsubz.%s  %s, %s, %sz",   dest_string(),COP2_REG_FP[DECODE_FD], COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]);  } 
-void P_VSUBw(char *buf){sprintf(buf, "vsubw.%s  %s, %s, %sw",   dest_string(),COP2_REG_FP[DECODE_FD], COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]); }  
-void P_VMADDx(char *buf){sprintf(buf, "vmaddx.%s  %s, %s, %sx",   dest_string(),COP2_REG_FP[DECODE_FD], COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]); }     
-void P_VMADDy(char *buf){sprintf(buf, "vmaddy.%s  %s, %s, %sy",   dest_string(),COP2_REG_FP[DECODE_FD], COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]); }     
-void P_VMADDz(char *buf){sprintf(buf, "vmaddz.%s  %s, %s, %sz",   dest_string(),COP2_REG_FP[DECODE_FD], COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]); }     
-void P_VMADDw(char *buf){sprintf(buf, "vmaddw.%s  %s, %s, %sw",   dest_string(),COP2_REG_FP[DECODE_FD], COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]); }     
-void P_VMSUBx(char *buf){sprintf(buf, "vmsubx.%s  %s, %s, %sx",   dest_string(),COP2_REG_FP[DECODE_FD], COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]); }     
-void P_VMSUBy(char *buf){sprintf(buf, "vmsuby.%s  %s, %s, %sy",   dest_string(),COP2_REG_FP[DECODE_FD], COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]); }     
-void P_VMSUBz(char *buf){sprintf(buf, "vmsubz.%s  %s, %s, %sz",   dest_string(),COP2_REG_FP[DECODE_FD], COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]); }     
+void P_VADDx(char *buf){sprintf(buf, "vaddx.%s  %s, %s, %sx",   dest_string(),COP2_REG_FP[DECODE_FD], COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]); }
+void P_VADDy(char *buf){sprintf(buf, "vaddy.%s  %s, %s, %sy",   dest_string(),COP2_REG_FP[DECODE_FD], COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]);  }
+void P_VADDz(char *buf){sprintf(buf, "vaddz.%s  %s, %s, %sz",   dest_string(),COP2_REG_FP[DECODE_FD], COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]); }
+void P_VADDw(char *buf){sprintf(buf, "vaddw.%s  %s, %s, %sw",   dest_string(),COP2_REG_FP[DECODE_FD], COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]); }
+void P_VSUBx(char *buf){sprintf(buf, "vsubx.%s  %s, %s, %sx",   dest_string(),COP2_REG_FP[DECODE_FD], COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]);  }
+void P_VSUBy(char *buf){sprintf(buf, "vsuby.%s  %s, %s, %sy",   dest_string(),COP2_REG_FP[DECODE_FD], COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]); }
+void P_VSUBz(char *buf){sprintf(buf, "vsubz.%s  %s, %s, %sz",   dest_string(),COP2_REG_FP[DECODE_FD], COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]);  }
+void P_VSUBw(char *buf){sprintf(buf, "vsubw.%s  %s, %s, %sw",   dest_string(),COP2_REG_FP[DECODE_FD], COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]); }
+void P_VMADDx(char *buf){sprintf(buf, "vmaddx.%s  %s, %s, %sx",   dest_string(),COP2_REG_FP[DECODE_FD], COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]); }
+void P_VMADDy(char *buf){sprintf(buf, "vmaddy.%s  %s, %s, %sy",   dest_string(),COP2_REG_FP[DECODE_FD], COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]); }
+void P_VMADDz(char *buf){sprintf(buf, "vmaddz.%s  %s, %s, %sz",   dest_string(),COP2_REG_FP[DECODE_FD], COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]); }
+void P_VMADDw(char *buf){sprintf(buf, "vmaddw.%s  %s, %s, %sw",   dest_string(),COP2_REG_FP[DECODE_FD], COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]); }
+void P_VMSUBx(char *buf){sprintf(buf, "vmsubx.%s  %s, %s, %sx",   dest_string(),COP2_REG_FP[DECODE_FD], COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]); }
+void P_VMSUBy(char *buf){sprintf(buf, "vmsuby.%s  %s, %s, %sy",   dest_string(),COP2_REG_FP[DECODE_FD], COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]); }
+void P_VMSUBz(char *buf){sprintf(buf, "vmsubz.%s  %s, %s, %sz",   dest_string(),COP2_REG_FP[DECODE_FD], COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]); }
 void P_VMSUBw(char *buf){sprintf(buf, "vmsubw.%s  %s, %s, %sw",   dest_string(),COP2_REG_FP[DECODE_FD], COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]); }
-void P_VMAXx(char *buf){sprintf(buf, "vmaxx.%s  %s, %s, %sx",   dest_string(),COP2_REG_FP[DECODE_FD], COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]); }        
-void P_VMAXy(char *buf){sprintf(buf, "vmaxy.%s  %s, %s, %sy",   dest_string(),COP2_REG_FP[DECODE_FD], COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]); }        
-void P_VMAXz(char *buf){sprintf(buf, "vmaxz.%s  %s, %s, %sz",   dest_string(),COP2_REG_FP[DECODE_FD], COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]); }        
-void P_VMAXw(char *buf){sprintf(buf, "vmaxw.%s  %s, %s, %sw",   dest_string(),COP2_REG_FP[DECODE_FD], COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]); }        
-void P_VMINIx(char *buf){sprintf(buf, "vminix.%s  %s, %s, %sx",   dest_string(),COP2_REG_FP[DECODE_FD], COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]); }        
-void P_VMINIy(char *buf){sprintf(buf, "vminiy.%s  %s, %s, %sy",   dest_string(),COP2_REG_FP[DECODE_FD], COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]); ;}        
-void P_VMINIz(char *buf){sprintf(buf, "vminiz.%s  %s, %s, %sz",   dest_string(),COP2_REG_FP[DECODE_FD], COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]); }        
-void P_VMINIw(char *buf){sprintf(buf, "vminiw.%s  %s, %s, %sw",   dest_string(),COP2_REG_FP[DECODE_FD], COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]); }  
-void P_VMULx(char *buf){sprintf(buf,"vmulx.%s  %s,%s,%sx",   dest_string(),COP2_REG_FP[DECODE_FD], COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]); }        
-void P_VMULy(char *buf){sprintf(buf,"vmuly.%s  %s,%s,%sy",   dest_string(),COP2_REG_FP[DECODE_FD], COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]); }        
-void P_VMULz(char *buf){sprintf(buf,"vmulz.%s  %s,%s,%sz",   dest_string(),COP2_REG_FP[DECODE_FD], COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]); }        
-void P_VMULw(char *buf){sprintf(buf,"vmulw.%s  %s,%s,%sw",   dest_string(),COP2_REG_FP[DECODE_FD], COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]); }        
-void P_VMULq(char *buf){sprintf(buf,"vmulq.%s  %s,%s,Q",dest_string(),COP2_REG_FP[DECODE_FD], COP2_REG_FP[DECODE_FS]); }         
-void P_VMAXi(char *buf){sprintf(buf,"vmaxi.%s  %s,%s,I",dest_string(),COP2_REG_FP[DECODE_FD], COP2_REG_FP[DECODE_FS]); }         
-void P_VMULi(char *buf){sprintf(buf,"vmuli.%s  %s,%s,I",dest_string(),COP2_REG_FP[DECODE_FD], COP2_REG_FP[DECODE_FS]); }         
-void P_VMINIi(char *buf){sprintf(buf,"vminii.%s  %s,%s,I",dest_string(),COP2_REG_FP[DECODE_FD], COP2_REG_FP[DECODE_FS]); } 
-void P_VADDq(char *buf){sprintf(buf,"vaddq.%s  %s,%s,Q",dest_string(),COP2_REG_FP[DECODE_FD], COP2_REG_FP[DECODE_FS]); } 
-void P_VMADDq(char *buf){sprintf(buf,"vmaddq.%s  %s,%s,Q",dest_string(),COP2_REG_FP[DECODE_FD], COP2_REG_FP[DECODE_FS]); }       
-void P_VADDi(char *buf){sprintf(buf,"vaddi.%s  %s,%s,I",dest_string(),COP2_REG_FP[DECODE_FD], COP2_REG_FP[DECODE_FS]); }        
-void P_VMADDi(char *buf){sprintf(buf,"vmaddi.%s  %s,%s,I",dest_string(),COP2_REG_FP[DECODE_FD], COP2_REG_FP[DECODE_FS]); }       
-void P_VSUBq(char *buf){sprintf(buf,"vsubq.%s  %s,%s,Q",dest_string(),COP2_REG_FP[DECODE_FD], COP2_REG_FP[DECODE_FS]); }         
-void P_VMSUBq(char *buf){sprintf(buf,"vmsubq.%s  %s,%s,Q",dest_string(),COP2_REG_FP[DECODE_FD], COP2_REG_FP[DECODE_FS]); }        
-void P_VSUbi(char *buf){sprintf(buf,"vsubi.%s  %s,%s,I",dest_string(),COP2_REG_FP[DECODE_FD], COP2_REG_FP[DECODE_FS]); }         
-void P_VMSUBi(char *buf){sprintf(buf,"vmsubi.%s  %s,%s,I",dest_string(),COP2_REG_FP[DECODE_FD], COP2_REG_FP[DECODE_FS]); }  
-void P_VADD(char *buf){sprintf(buf, "vadd.%s  %s, %s, %s",   dest_string(),COP2_REG_FP[DECODE_FD], COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]); }         
-void P_VMADD(char *buf){sprintf(buf, "vmadd.%s  %s, %s, %s",   dest_string(),COP2_REG_FP[DECODE_FD], COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]); }        
-void P_VMUL(char *buf){sprintf(buf, "vmul.%s  %s, %s, %s",   dest_string(),COP2_REG_FP[DECODE_FD], COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]); }         
-void P_VMAX(char *buf){sprintf(buf, "vmax.%s  %s, %s, %s",   dest_string(),COP2_REG_FP[DECODE_FD], COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]); }         
-void P_VSUB(char *buf){sprintf(buf, "vsub.%s  %s, %s, %s",   dest_string(),COP2_REG_FP[DECODE_FD], COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]); }          
-void P_VMSUB(char *buf){sprintf(buf, "vmsub.%s  %s, %s, %s",   dest_string(),COP2_REG_FP[DECODE_FD], COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]); }        
-void P_VOPMSUB(char *buf){sprintf(buf, "vopmsub.xyz  %s, %s, %s",   COP2_REG_FP[DECODE_FD], COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]); }       
-void P_VMINI(char *buf){sprintf(buf, "vmini.%s  %s, %s, %s",   dest_string(),COP2_REG_FP[DECODE_FD], COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]); }   
+void P_VMAXx(char *buf){sprintf(buf, "vmaxx.%s  %s, %s, %sx",   dest_string(),COP2_REG_FP[DECODE_FD], COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]); }
+void P_VMAXy(char *buf){sprintf(buf, "vmaxy.%s  %s, %s, %sy",   dest_string(),COP2_REG_FP[DECODE_FD], COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]); }
+void P_VMAXz(char *buf){sprintf(buf, "vmaxz.%s  %s, %s, %sz",   dest_string(),COP2_REG_FP[DECODE_FD], COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]); }
+void P_VMAXw(char *buf){sprintf(buf, "vmaxw.%s  %s, %s, %sw",   dest_string(),COP2_REG_FP[DECODE_FD], COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]); }
+void P_VMINIx(char *buf){sprintf(buf, "vminix.%s  %s, %s, %sx",   dest_string(),COP2_REG_FP[DECODE_FD], COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]); }
+void P_VMINIy(char *buf){sprintf(buf, "vminiy.%s  %s, %s, %sy",   dest_string(),COP2_REG_FP[DECODE_FD], COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]); ;}
+void P_VMINIz(char *buf){sprintf(buf, "vminiz.%s  %s, %s, %sz",   dest_string(),COP2_REG_FP[DECODE_FD], COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]); }
+void P_VMINIw(char *buf){sprintf(buf, "vminiw.%s  %s, %s, %sw",   dest_string(),COP2_REG_FP[DECODE_FD], COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]); }
+void P_VMULx(char *buf){sprintf(buf,"vmulx.%s  %s,%s,%sx",   dest_string(),COP2_REG_FP[DECODE_FD], COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]); }
+void P_VMULy(char *buf){sprintf(buf,"vmuly.%s  %s,%s,%sy",   dest_string(),COP2_REG_FP[DECODE_FD], COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]); }
+void P_VMULz(char *buf){sprintf(buf,"vmulz.%s  %s,%s,%sz",   dest_string(),COP2_REG_FP[DECODE_FD], COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]); }
+void P_VMULw(char *buf){sprintf(buf,"vmulw.%s  %s,%s,%sw",   dest_string(),COP2_REG_FP[DECODE_FD], COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]); }
+void P_VMULq(char *buf){sprintf(buf,"vmulq.%s  %s,%s,Q",dest_string(),COP2_REG_FP[DECODE_FD], COP2_REG_FP[DECODE_FS]); }
+void P_VMAXi(char *buf){sprintf(buf,"vmaxi.%s  %s,%s,I",dest_string(),COP2_REG_FP[DECODE_FD], COP2_REG_FP[DECODE_FS]); }
+void P_VMULi(char *buf){sprintf(buf,"vmuli.%s  %s,%s,I",dest_string(),COP2_REG_FP[DECODE_FD], COP2_REG_FP[DECODE_FS]); }
+void P_VMINIi(char *buf){sprintf(buf,"vminii.%s  %s,%s,I",dest_string(),COP2_REG_FP[DECODE_FD], COP2_REG_FP[DECODE_FS]); }
+void P_VADDq(char *buf){sprintf(buf,"vaddq.%s  %s,%s,Q",dest_string(),COP2_REG_FP[DECODE_FD], COP2_REG_FP[DECODE_FS]); }
+void P_VMADDq(char *buf){sprintf(buf,"vmaddq.%s  %s,%s,Q",dest_string(),COP2_REG_FP[DECODE_FD], COP2_REG_FP[DECODE_FS]); }
+void P_VADDi(char *buf){sprintf(buf,"vaddi.%s  %s,%s,I",dest_string(),COP2_REG_FP[DECODE_FD], COP2_REG_FP[DECODE_FS]); }
+void P_VMADDi(char *buf){sprintf(buf,"vmaddi.%s  %s,%s,I",dest_string(),COP2_REG_FP[DECODE_FD], COP2_REG_FP[DECODE_FS]); }
+void P_VSUBq(char *buf){sprintf(buf,"vsubq.%s  %s,%s,Q",dest_string(),COP2_REG_FP[DECODE_FD], COP2_REG_FP[DECODE_FS]); }
+void P_VMSUBq(char *buf){sprintf(buf,"vmsubq.%s  %s,%s,Q",dest_string(),COP2_REG_FP[DECODE_FD], COP2_REG_FP[DECODE_FS]); }
+void P_VSUbi(char *buf){sprintf(buf,"vsubi.%s  %s,%s,I",dest_string(),COP2_REG_FP[DECODE_FD], COP2_REG_FP[DECODE_FS]); }
+void P_VMSUBi(char *buf){sprintf(buf,"vmsubi.%s  %s,%s,I",dest_string(),COP2_REG_FP[DECODE_FD], COP2_REG_FP[DECODE_FS]); }
+void P_VADD(char *buf){sprintf(buf, "vadd.%s  %s, %s, %s",   dest_string(),COP2_REG_FP[DECODE_FD], COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]); }
+void P_VMADD(char *buf){sprintf(buf, "vmadd.%s  %s, %s, %s",   dest_string(),COP2_REG_FP[DECODE_FD], COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]); }
+void P_VMUL(char *buf){sprintf(buf, "vmul.%s  %s, %s, %s",   dest_string(),COP2_REG_FP[DECODE_FD], COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]); }
+void P_VMAX(char *buf){sprintf(buf, "vmax.%s  %s, %s, %s",   dest_string(),COP2_REG_FP[DECODE_FD], COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]); }
+void P_VSUB(char *buf){sprintf(buf, "vsub.%s  %s, %s, %s",   dest_string(),COP2_REG_FP[DECODE_FD], COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]); }
+void P_VMSUB(char *buf){sprintf(buf, "vmsub.%s  %s, %s, %s",   dest_string(),COP2_REG_FP[DECODE_FD], COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]); }
+void P_VOPMSUB(char *buf){sprintf(buf, "vopmsub.xyz  %s, %s, %s",   COP2_REG_FP[DECODE_FD], COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]); }
+void P_VMINI(char *buf){sprintf(buf, "vmini.%s  %s, %s, %s",   dest_string(),COP2_REG_FP[DECODE_FD], COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]); }
 void P_VIADD(char *buf){strcpy(buf,"viadd");}
-void P_VISUB(char *buf){strcpy(buf,"visub");}        
-void P_VIADDI(char *buf){strcpy(buf,"viaddi");}       
-void P_VIAND(char *buf){strcpy(buf,"viand");}         
-void P_VIOR(char *buf){strcpy(buf,"vior");}         
-void P_VCALLMS(char *buf){strcpy(buf,"vcallms");}      
-void P_CALLMSR(char *buf){strcpy(buf,"callmsr");}    
+void P_VISUB(char *buf){strcpy(buf,"visub");}
+void P_VIADDI(char *buf){strcpy(buf,"viaddi");}
+void P_VIAND(char *buf){strcpy(buf,"viand");}
+void P_VIOR(char *buf){strcpy(buf,"vior");}
+void P_VCALLMS(char *buf){strcpy(buf,"vcallms");}
+void P_CALLMSR(char *buf){strcpy(buf,"callmsr");}
 //***********************************END OF SPECIAL1 VU0 TABLE*****************************
 //******************************SPECIAL2 VUO TABLE*****************************************
-void P_VADDAx(char *buf){sprintf(buf,"vaddax.%s ACC,%s,%sx",dest_string(),COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]);}      
-void P_VADDAy(char *buf){sprintf(buf,"vadday.%s ACC,%s,%sy",dest_string(),COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]);}      
-void P_VADDAz(char *buf){sprintf(buf,"vaddaz.%s ACC,%s,%sz",dest_string(),COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]);}      
-void P_VADDAw(char *buf){sprintf(buf,"vaddaw.%s ACC,%s,%sw",dest_string(),COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]);}      
-void P_VSUBAx(char *buf){sprintf(buf,"vsubax.%s ACC,%s,%sx",dest_string(),COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]);}      
-void P_VSUBAy(char *buf){sprintf(buf,"vsubay.%s ACC,%s,%sy",dest_string(),COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]);}      
-void P_VSUBAz(char *buf){sprintf(buf,"vsubaz.%s ACC,%s,%sz",dest_string(),COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]);}      
+void P_VADDAx(char *buf){sprintf(buf,"vaddax.%s ACC,%s,%sx",dest_string(),COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]);}
+void P_VADDAy(char *buf){sprintf(buf,"vadday.%s ACC,%s,%sy",dest_string(),COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]);}
+void P_VADDAz(char *buf){sprintf(buf,"vaddaz.%s ACC,%s,%sz",dest_string(),COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]);}
+void P_VADDAw(char *buf){sprintf(buf,"vaddaw.%s ACC,%s,%sw",dest_string(),COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]);}
+void P_VSUBAx(char *buf){sprintf(buf,"vsubax.%s ACC,%s,%sx",dest_string(),COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]);}
+void P_VSUBAy(char *buf){sprintf(buf,"vsubay.%s ACC,%s,%sy",dest_string(),COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]);}
+void P_VSUBAz(char *buf){sprintf(buf,"vsubaz.%s ACC,%s,%sz",dest_string(),COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]);}
 void P_VSUBAw(char *buf){sprintf(buf,"vsubaw.%s ACC,%s,%sw",dest_string(),COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]);}
-void P_VMADDAx(char *buf){sprintf(buf,"vmaddax.%s ACC,%s,%sx",dest_string(),COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]);} 
-void P_VMADDAy(char *buf){sprintf(buf,"vmadday.%s ACC,%s,%sy",dest_string(),COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]);} 
-void P_VMADDAz(char *buf){sprintf(buf,"vmaddaz.%s ACC,%s,%sz",dest_string(),COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]);} 
-void P_VMADDAw(char *buf){sprintf(buf,"vmaddaw.%s ACC,%s,%sw",dest_string(),COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]);} 
-void P_VMSUBAx(char *buf){sprintf(buf,"vmsubax.%s ACC,%s,%sx",dest_string(),COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]);} 
-void P_VMSUBAy(char *buf){sprintf(buf,"vmsubay.%s ACC,%s,%sy",dest_string(),COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]);} 
-void P_VMSUBAz(char *buf){sprintf(buf,"vmsubaz.%s ACC,%s,%sz",dest_string(),COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]);}        
-void P_VMSUBAw(char *buf){sprintf(buf,"vmsubaw.%s ACC,%s,%sw",dest_string(),COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]);}  
-void P_VITOF0(char *buf){sprintf(buf, "vitof0.%s  %s, %s",   dest_string(),COP2_REG_FP[DECODE_FT], COP2_REG_FP[DECODE_FS]); }      
-void P_VITOF4(char *buf){sprintf(buf, "vitof4.%s  %s, %s",   dest_string(),COP2_REG_FP[DECODE_FT], COP2_REG_FP[DECODE_FS]); }      
-void P_VITOF12(char *buf){sprintf(buf, "vitof12.%s  %s, %s",   dest_string(),COP2_REG_FP[DECODE_FT], COP2_REG_FP[DECODE_FS]); }     
-void P_VITOF15(char *buf){sprintf(buf, "vitof15.%s  %s, %s",   dest_string(),COP2_REG_FP[DECODE_FT], COP2_REG_FP[DECODE_FS]); }     
-void P_VFTOI0(char *buf) {sprintf(buf, "vftoi0.%s  %s, %s",   dest_string(),COP2_REG_FP[DECODE_FT], COP2_REG_FP[DECODE_FS]); }      
-void P_VFTOI4(char *buf) {sprintf(buf, "vftoi4.%s  %s, %s",   dest_string(),COP2_REG_FP[DECODE_FT], COP2_REG_FP[DECODE_FS]); }      
-void P_VFTOI12(char *buf){sprintf(buf, "vftoi12.%s  %s, %s",   dest_string(),COP2_REG_FP[DECODE_FT], COP2_REG_FP[DECODE_FS]); }     
+void P_VMADDAx(char *buf){sprintf(buf,"vmaddax.%s ACC,%s,%sx",dest_string(),COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]);}
+void P_VMADDAy(char *buf){sprintf(buf,"vmadday.%s ACC,%s,%sy",dest_string(),COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]);}
+void P_VMADDAz(char *buf){sprintf(buf,"vmaddaz.%s ACC,%s,%sz",dest_string(),COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]);}
+void P_VMADDAw(char *buf){sprintf(buf,"vmaddaw.%s ACC,%s,%sw",dest_string(),COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]);}
+void P_VMSUBAx(char *buf){sprintf(buf,"vmsubax.%s ACC,%s,%sx",dest_string(),COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]);}
+void P_VMSUBAy(char *buf){sprintf(buf,"vmsubay.%s ACC,%s,%sy",dest_string(),COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]);}
+void P_VMSUBAz(char *buf){sprintf(buf,"vmsubaz.%s ACC,%s,%sz",dest_string(),COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]);}
+void P_VMSUBAw(char *buf){sprintf(buf,"vmsubaw.%s ACC,%s,%sw",dest_string(),COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]);}
+void P_VITOF0(char *buf){sprintf(buf, "vitof0.%s  %s, %s",   dest_string(),COP2_REG_FP[DECODE_FT], COP2_REG_FP[DECODE_FS]); }
+void P_VITOF4(char *buf){sprintf(buf, "vitof4.%s  %s, %s",   dest_string(),COP2_REG_FP[DECODE_FT], COP2_REG_FP[DECODE_FS]); }
+void P_VITOF12(char *buf){sprintf(buf, "vitof12.%s  %s, %s",   dest_string(),COP2_REG_FP[DECODE_FT], COP2_REG_FP[DECODE_FS]); }
+void P_VITOF15(char *buf){sprintf(buf, "vitof15.%s  %s, %s",   dest_string(),COP2_REG_FP[DECODE_FT], COP2_REG_FP[DECODE_FS]); }
+void P_VFTOI0(char *buf) {sprintf(buf, "vftoi0.%s  %s, %s",   dest_string(),COP2_REG_FP[DECODE_FT], COP2_REG_FP[DECODE_FS]); }
+void P_VFTOI4(char *buf) {sprintf(buf, "vftoi4.%s  %s, %s",   dest_string(),COP2_REG_FP[DECODE_FT], COP2_REG_FP[DECODE_FS]); }
+void P_VFTOI12(char *buf){sprintf(buf, "vftoi12.%s  %s, %s",   dest_string(),COP2_REG_FP[DECODE_FT], COP2_REG_FP[DECODE_FS]); }
 void P_VFTOI15(char *buf){sprintf(buf, "vftoi15.%s  %s, %s",   dest_string(),COP2_REG_FP[DECODE_FT], COP2_REG_FP[DECODE_FS]); }
-void P_VMULAx(char *buf){sprintf(buf,"vmulax.%s ACC,%s,%sx",dest_string(),COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]);}      
-void P_VMULAy(char *buf){sprintf(buf,"vmulay.%s ACC,%s,%sy",dest_string(),COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]);}      
-void P_VMULAz(char *buf){sprintf(buf,"vmulaz.%s ACC,%s,%sz",dest_string(),COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]);}      
-void P_VMULAw(char *buf){sprintf(buf,"vmulaw.%s ACC,%s,%sw",dest_string(),COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]);}      
-void P_VMULAq(char *buf){sprintf(buf,"vmulaq.%s ACC %s, Q"  ,dest_string(), COP2_REG_FP[DECODE_FS]); }     
-void P_VABS(char *buf){sprintf(buf, "vabs.%s  %s, %s",   dest_string(),COP2_REG_FP[DECODE_FT], COP2_REG_FP[DECODE_FS]);}        
-void P_VMULAi(char *buf){sprintf(buf,"vmulaq.%s ACC %s, I"  ,dest_string(), COP2_REG_FP[DECODE_FS]); }      
+void P_VMULAx(char *buf){sprintf(buf,"vmulax.%s ACC,%s,%sx",dest_string(),COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]);}
+void P_VMULAy(char *buf){sprintf(buf,"vmulay.%s ACC,%s,%sy",dest_string(),COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]);}
+void P_VMULAz(char *buf){sprintf(buf,"vmulaz.%s ACC,%s,%sz",dest_string(),COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]);}
+void P_VMULAw(char *buf){sprintf(buf,"vmulaw.%s ACC,%s,%sw",dest_string(),COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]);}
+void P_VMULAq(char *buf){sprintf(buf,"vmulaq.%s ACC %s, Q"  ,dest_string(), COP2_REG_FP[DECODE_FS]); }
+void P_VABS(char *buf){sprintf(buf, "vabs.%s  %s, %s",   dest_string(),COP2_REG_FP[DECODE_FT], COP2_REG_FP[DECODE_FS]);}
+void P_VMULAi(char *buf){sprintf(buf,"vmulaq.%s ACC %s, I"  ,dest_string(), COP2_REG_FP[DECODE_FS]); }
 void P_VCLIPw(char *buf){strcpy(buf,"vclip");}
-void P_VADDAq(char *buf){sprintf(buf,"vaddaq.%s ACC %s, Q"  ,dest_string(), COP2_REG_FP[DECODE_FS]); }     
-void P_VMADDAq(char *buf){sprintf(buf,"vmaddaq.%s ACC %s, Q"  ,dest_string(), COP2_REG_FP[DECODE_FS]); }     
-void P_VADDAi(char *buf){sprintf(buf,"vaddai.%s ACC %s, I"  ,dest_string(), COP2_REG_FP[DECODE_FS]); }      
-void P_VMADDAi(char *buf){sprintf(buf,"vmaddai.%s ACC %s, Q"  ,dest_string(), COP2_REG_FP[DECODE_FS]); }     
-void P_VSUBAq(char *buf){sprintf(buf,"vsubaq.%s ACC %s, Q"  ,dest_string(), COP2_REG_FP[DECODE_FS]); }      
-void P_VMSUBAq(char *buf){sprintf(buf,"vmsubaq.%s ACC %s, Q"  ,dest_string(), COP2_REG_FP[DECODE_FS]); }     
-void P_VSUBAi(char *buf){sprintf(buf,"vsubai.%s ACC %s, I"  ,dest_string(), COP2_REG_FP[DECODE_FS]); }      
+void P_VADDAq(char *buf){sprintf(buf,"vaddaq.%s ACC %s, Q"  ,dest_string(), COP2_REG_FP[DECODE_FS]); }
+void P_VMADDAq(char *buf){sprintf(buf,"vmaddaq.%s ACC %s, Q"  ,dest_string(), COP2_REG_FP[DECODE_FS]); }
+void P_VADDAi(char *buf){sprintf(buf,"vaddai.%s ACC %s, I"  ,dest_string(), COP2_REG_FP[DECODE_FS]); }
+void P_VMADDAi(char *buf){sprintf(buf,"vmaddai.%s ACC %s, Q"  ,dest_string(), COP2_REG_FP[DECODE_FS]); }
+void P_VSUBAq(char *buf){sprintf(buf,"vsubaq.%s ACC %s, Q"  ,dest_string(), COP2_REG_FP[DECODE_FS]); }
+void P_VMSUBAq(char *buf){sprintf(buf,"vmsubaq.%s ACC %s, Q"  ,dest_string(), COP2_REG_FP[DECODE_FS]); }
+void P_VSUBAi(char *buf){sprintf(buf,"vsubai.%s ACC %s, I"  ,dest_string(), COP2_REG_FP[DECODE_FS]); }
 void P_VMSUBAi(char *buf){sprintf(buf,"vmsubai.%s ACC %s, I"  ,dest_string(), COP2_REG_FP[DECODE_FS]); }
-void P_VADDA(char *buf){sprintf(buf,"vadda.%s ACC %s, %s"  ,dest_string(), COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]); }        
-void P_VMADDA(char *buf){sprintf(buf,"vmadda.%s ACC %s, %s"  ,dest_string(), COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]); }      
-void P_VMULA(char *buf){sprintf(buf,"vmula.%s ACC %s, %s"  ,dest_string(), COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]); }       
-void P_VSUBA(char *buf){sprintf(buf,"vsuba.%s ACC %s, %s"  ,dest_string(), COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]); }       
-void P_VMSUBA(char *buf){sprintf(buf,"vmsuba.%s ACC %s, %s"  ,dest_string(), COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]); }      
-void P_VOPMULA(char *buf){sprintf(buf,"vopmula.xyz %sxyz, %sxyz"  ,COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]); }     
-void P_VNOP(char *buf){strcpy(buf,"vnop");}   
-void P_VMONE(char *buf){sprintf(buf,"vmove.%s, %s, %s"  ,dest_string(), COP2_REG_FP[DECODE_FT],COP2_REG_FP[DECODE_FS]); }        
-void P_VMR32(char *buf){sprintf(buf,"vmr32.%s, %s, %s"  ,dest_string(), COP2_REG_FP[DECODE_FT],COP2_REG_FP[DECODE_FS]); }              
-void P_VLQI(char *buf){strcpy(buf,"vlqi");}        
-void P_VSQI(char *buf){strcpy(buf,"vsqi");}        
-void P_VLQD(char *buf){strcpy(buf,"vlqd");}        
-void P_VSQD(char *buf){strcpy(buf,"vsqd");}   
-void P_VDIV(char *buf){strcpy(buf,"vdiv");}        
-void P_VSQRT(char *buf){strcpy(buf,"vsqrt");}       
-void P_VRSQRT(char *buf){strcpy(buf,"vrsqrt");}      
-void P_VWAITQ(char *buf){strcpy(buf,"vwaitq");}      
-void P_VMTIR(char *buf){strcpy(buf,"vmtir");}       
-void P_VMFIR(char *buf){strcpy(buf,"vmfir");}       
-void P_VILWR(char *buf){strcpy(buf,"vilwr");}       
-void P_VISWR(char *buf){strcpy(buf,"viswr");}  
-void P_VRNEXT(char *buf){strcpy(buf,"vrnext");}      
-void P_VRGET(char *buf){strcpy(buf,"vrget");}       
-void P_VRINIT(char *buf){strcpy(buf,"vrinit");}      
-void P_VRXOR(char *buf){strcpy(buf,"vrxor");}  
-//************************************END OF SPECIAL2 VUO TABLE****************************     
+void P_VADDA(char *buf){sprintf(buf,"vadda.%s ACC %s, %s"  ,dest_string(), COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]); }
+void P_VMADDA(char *buf){sprintf(buf,"vmadda.%s ACC %s, %s"  ,dest_string(), COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]); }
+void P_VMULA(char *buf){sprintf(buf,"vmula.%s ACC %s, %s"  ,dest_string(), COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]); }
+void P_VSUBA(char *buf){sprintf(buf,"vsuba.%s ACC %s, %s"  ,dest_string(), COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]); }
+void P_VMSUBA(char *buf){sprintf(buf,"vmsuba.%s ACC %s, %s"  ,dest_string(), COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]); }
+void P_VOPMULA(char *buf){sprintf(buf,"vopmula.xyz %sxyz, %sxyz"  ,COP2_REG_FP[DECODE_FS],COP2_REG_FP[DECODE_FT]); }
+void P_VNOP(char *buf){strcpy(buf,"vnop");}
+void P_VMONE(char *buf){sprintf(buf,"vmove.%s, %s, %s"  ,dest_string(), COP2_REG_FP[DECODE_FT],COP2_REG_FP[DECODE_FS]); }
+void P_VMR32(char *buf){sprintf(buf,"vmr32.%s, %s, %s"  ,dest_string(), COP2_REG_FP[DECODE_FT],COP2_REG_FP[DECODE_FS]); }
+void P_VLQI(char *buf){strcpy(buf,"vlqi");}
+void P_VSQI(char *buf){strcpy(buf,"vsqi");}
+void P_VLQD(char *buf){strcpy(buf,"vlqd");}
+void P_VSQD(char *buf){strcpy(buf,"vsqd");}
+void P_VDIV(char *buf){strcpy(buf,"vdiv");}
+void P_VSQRT(char *buf){strcpy(buf,"vsqrt");}
+void P_VRSQRT(char *buf){strcpy(buf,"vrsqrt");}
+void P_VWAITQ(char *buf){strcpy(buf,"vwaitq");}
+void P_VMTIR(char *buf){strcpy(buf,"vmtir");}
+void P_VMFIR(char *buf){strcpy(buf,"vmfir");}
+void P_VILWR(char *buf){strcpy(buf,"vilwr");}
+void P_VISWR(char *buf){strcpy(buf,"viswr");}
+void P_VRNEXT(char *buf){strcpy(buf,"vrnext");}
+void P_VRGET(char *buf){strcpy(buf,"vrget");}
+void P_VRINIT(char *buf){strcpy(buf,"vrinit");}
+void P_VRXOR(char *buf){strcpy(buf,"vrxor");}
+//************************************END OF SPECIAL2 VUO TABLE****************************
